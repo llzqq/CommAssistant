@@ -1,0 +1,21 @@
+{
+  "rs422": {
+    "port": "COM3",
+    "baud": 115200
+  },
+  "can": {
+    "type": "SLCAN",
+    "channel": "COM4",
+    "bitrate": 500000,
+    "idType": "Standard",
+    "id": "123"
+  },
+  "ethernet": {
+    "protocol": "TCP",
+    "role": "Client",
+    "localIp": "0.0.0.0",
+    "localPort": 5000,
+    "remoteIp": "127.0.0.1",
+    "remotePort": 5000
+  }
+}

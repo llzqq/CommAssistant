@@ -1,0 +1,1 @@
+call sfx.bat "C:\Program Files\WinRAR\winrar" exampleExecutableName exampleSfx sceFile.sce sfx.ico

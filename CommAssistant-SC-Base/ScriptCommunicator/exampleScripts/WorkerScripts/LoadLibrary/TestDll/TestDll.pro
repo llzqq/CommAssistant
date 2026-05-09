@@ -1,0 +1,34 @@
+#-------------------------------------------------
+#
+# Project created by QtCreator 2014-10-22T07:48:59
+#
+#-------------------------------------------------
+
+#QT       -= gui
+
+CONFIG += c++11
+
+QT += qml
+
+
+INCLUDEPATH += ../
+INCLUDEPATH += ../scriptClasses
+
+TARGET = TestDll
+TEMPLATE = lib
+
+DEFINES += TESTDLL_LIBRARY
+
+SOURCES += testdll.cpp
+
+HEADERS += testdll.h\
+        testdll_global.h
+
+unix {
+    target.path = /usr/lib
+    INSTALLS += target
+}
+
+macx{
+QMAKE_APPLE_DEVICE_ARCHS = x86_64 arm64
+}

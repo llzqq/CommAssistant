@@ -1,0 +1,28 @@
+ScriptButton::setEnabled(bool isEnabled):void \nEnables or disables the widget.
+ScriptButton::hide(void):void \nHides the widget.
+ScriptButton::show(void):void \nShows the widget.
+ScriptButton::setBackgroundColor(String color):void \nSets the background color of a script gui element. Possible colors are:\nblack, white, darkGray, lightGray, darkRed, red, green, blue, cyan, magenta, darkGreen, darkBlue, darkCyan, darkMagenta, darkYellow and yellow.\nNote:\nFore some GUI elements (like the RadioButton) setAutoFillBackground must be called if the background color shall be changed and\nfor some other GUI elements (like the CheckBox) the background color cannot be changed.
+ScriptButton::setWindowTextColor(String color):void \nSets the window text color of a script gui element. Possible colors are:\nblack, white, darkGray, lightGray, darkRed, red, green, blue, cyan, magenta, darkGreen, darkBlue, darkCyan, darkMagenta, darkYellow and yellow.
+ScriptButton::setTextColor(String color):void \nSets the text color of a script gui element. Possible colors are:\nblack, white, darkGray, lightGray, darkRed, red, green, blue, cyan, magenta, darkGreen, darkBlue, darkCyan, darkMagenta, darkYellow and yellow.
+ScriptButton::setPaletteColor(String palette, String color):void \nSets a palette color of a script gui element.\nPossible palette values are: Base, Button, WindowText, Window, Text and ButtonText.\nPossible colors are: black, white, darkGray, lige, cyan, magenta and yellow.
+ScriptButton::setPaletteColorRgb(Number red, Number green, Number blue, String palette):void \nSets a palette color of a script gui element. Possible palette values are:\nBase, Button, WindowText, Window, Text and ButtonText.
+ScriptButton::setToolTip(String text, Number duration):void \nSets the tool tip of the script gui element.\nIf the duration is -1 (default) the duration is calculated depending on the length of the tool tip.
+ScriptButton::isVisible(void):bool \nReturn true, if the widget is visible.
+ScriptButton::setFocus(void):void \nGives the keyboard input focus to this widget.
+ScriptButton::width(void):Number \nReturns the width of the widget excluding any window frame.
+ScriptButton::height(void):Number \nReturns the height of the widget excluding any window frame.
+ScriptButton::setAdditionalData(Number key, String data):void \nSets/stores an additional data entry.
+ScriptButton::getAdditionalData(Number key):String \nReturns an additional data entry.
+ScriptButton::blockSignals(bool block):bool \nIf block is true, signals emitted by this object are blocked\n(i.e., emitting a signal will not invoke anything connected to it).\nIf block is false, no such blocking will occur.\nThe return value is the previous value of the blocking state.
+ScriptButton::getClassName(void):String \nReturns the class name of this object.
+ScriptButton::getObjectName(void):String \nReturns the name of this object (UI_'object name in the ui file').\nNote: This function returns only a not empty string for GUI elements from ui files\nor if the function setObjectName has been called for the current object.
+ScriptButton::setObjectName(String name):void \nSets the name of the current object (can be retrieved with getObjectName).
+ScriptButton::setText(String text):void \nSets the button text.
+ScriptButton::text(void):String \nReturns the button text.
+ScriptButton::setIcon(String iconFileName):void \nSets the icon of the button.
+ScriptButton::setCheckable(bool checkable):void \nSets the checkable property of the button.
+ScriptButton::isCheckable(void):bool \nReturns true if the button is checkable and false if not.
+ScriptButton::isChecked(void):bool \nReturns true if the button is checked and false if not.
+ScriptButton::setChecked(bool checked):void \nChecks or unchecks the button.
+ScriptButton::setAutoFillBackground(bool enabled):void \nThis property holds whether the widget background is filled automatically.\nIf enabled, this property will cause Qt to fill the background of the widget before invoking the paint event.\nNote:\nSome GUI elements (like the RadioButton) need this property set to true if the background color shall be changed with setBackgroundColor.
+ScriptButton::clickedSignal.connect(void) \nThis signal is emitted if the user presses the button.

@@ -1,0 +1,7 @@
+
+
+- widgetbox.xml ersetzen (Src/qttools/src/designer/src/components/widgetbox)
+- die Designer Sourcecodedateien ersetzen (Src/qttools/src/designer/src/designer)
+- kompilieren
+- Src\qtbase\lib\Qt5DesignerComponents.(dll, so) kopieren
+- Src\qtbase\bin\designer (.exe) kopieren (Dark Mode eingebaut)

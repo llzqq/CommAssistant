@@ -1,0 +1,2 @@
+ScriptXmlAttribute::value(void):String \nReturns the value of the attribute.
+ScriptXmlAttribute::name(void):String \nReturns the name of the attribute.

@@ -1,0 +1,35 @@
+ScriptComboBox::setEnabled(bool isEnabled):void \nEnables or disables the widget.
+ScriptComboBox::hide(void):void \nHides the widget.
+ScriptComboBox::show(void):void \nShows the widget.
+ScriptComboBox::setBackgroundColor(String color):void \nSets the background color of a script gui element. Possible colors are:\nblack, white, darkGray, lightGray, darkRed, red, green, blue, cyan, magenta, darkGreen, darkBlue, darkCyan, darkMagenta, darkYellow and yellow.\nNote:\nFore some GUI elements (like the RadioButton) setAutoFillBackground must be called if the background color shall be changed and\nfor some other GUI elements (like the CheckBox) the background color cannot be changed.
+ScriptComboBox::setWindowTextColor(String color):void \nSets the window text color of a script gui element. Possible colors are:\nblack, white, darkGray, lightGray, darkRed, red, green, blue, cyan, magenta, darkGreen, darkBlue, darkCyan, darkMagenta, darkYellow and yellow.
+ScriptComboBox::setTextColor(String color):void \nSets the text color of a script gui element. Possible colors are:\nblack, white, darkGray, lightGray, darkRed, red, green, blue, cyan, magenta, darkGreen, darkBlue, darkCyan, darkMagenta, darkYellow and yellow.
+ScriptComboBox::setPaletteColor(String palette, String color):void \nSets a palette color of a script gui element.\nPossible palette values are: Base, Button, WindowText, Window, Text and ButtonText.\nPossible colors are: black, white, darkGray, lige, cyan, magenta and yellow.
+ScriptComboBox::setPaletteColorRgb(Number red, Number green, Number blue, String palette):void \nSets a palette color of a script gui element. Possible palette values are:\nBase, Button, WindowText, Window, Text and ButtonText.
+ScriptComboBox::setToolTip(String text, Number duration):void \nSets the tool tip of the script gui element.\nIf the duration is -1 (default) the duration is calculated depending on the length of the tool tip.
+ScriptComboBox::isVisible(void):bool \nReturn true, if the widget is visible.
+ScriptComboBox::setFocus(void):void \nGives the keyboard input focus to this widget.
+ScriptComboBox::width(void):Number \nReturns the width of the widget excluding any window frame.
+ScriptComboBox::height(void):Number \nReturns the height of the widget excluding any window frame.
+ScriptComboBox::setAdditionalData(Number key, String data):void \nSets/stores an additional data entry.
+ScriptComboBox::getAdditionalData(Number key):String \nReturns an additional data entry.
+ScriptComboBox::blockSignals(bool block):bool \nIf block is true, signals emitted by this object are blocked\n(i.e., emitting a signal will not invoke anything connected to it).\nIf block is false, no such blocking will occur.\nThe return value is the previous value of the blocking state.
+ScriptComboBox::getClassName(void):String \nReturns the class name of this object.
+ScriptComboBox::getObjectName(void):String \nReturns the name of this object (UI_'object name in the ui file').\nNote: This function returns only a not empty string for GUI elements from ui files\nor if the function setObjectName has been called for the current object.
+ScriptComboBox::setObjectName(String name):void \nSets the name of the current object (can be retrieved with getObjectName).
+ScriptComboBox::addItem(String text):void \nAdds one item to the combo box.
+ScriptComboBox::insertItem(Number index, String text):void \nInserts one item into the combo box.
+ScriptComboBox::removeItem(Number index):void \nRemoves one item from the combo box.
+ScriptComboBox::setEditable(bool editable):void \nSets the editable property of the combo box.\nIf the editable property is true, then the text of the selected item can be changed.
+ScriptComboBox::isEditable(void):bool \nReturns true if the combo box is editable.\nIf the editable property is true, then the text of the selected item can be changed.
+ScriptComboBox::currentIndex(void):Number \nReturns the index of the current selected item.
+ScriptComboBox::currentText(void):String \nReturns the text of the current selected item.
+ScriptComboBox::itemText(Number index):String \nReturns the item (identified by index) text.
+ScriptComboBox::setItemText(Number index, String text):void \nSets the item (identified by index) text.
+ScriptComboBox::setCurrentText(String text):void \nSets the text of the current selected item.
+ScriptComboBox::setCurrentIndex(Number index):void \nSets the index of the current selected item.
+ScriptComboBox::count(void):Number \nReturns the number of items in the combo box.  
+ScriptComboBox::clear(void):void \nClears the combo box and removes all items.
+ScriptComboBox::setAutoFillBackground(bool enabled):void \nThis property holds whether the widget background is filled automatically.\nIf enabled, this property will cause Qt to fill the background of the widget before invoking the paint event.\nNote:\nSome GUI elements (like the RadioButton) need this property set to true if the background color shall be changed with setBackgroundColor.
+ScriptComboBox::currentTextChangedSignal.connect(String newText) \nThis signal is emitted if the text of the current selected item has been changed\n(new index or the text has been modified).
+ScriptComboBox::currentIndexChangedSignal.connect(Number currentSelectedIndex) \nThis signal is emitted if the current selected index has been changed.

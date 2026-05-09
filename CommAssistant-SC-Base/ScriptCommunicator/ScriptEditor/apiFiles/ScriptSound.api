@@ -1,0 +1,4 @@
+ScriptSound::fileName(void):String \nReturns the filename associated with this script sound object.
+ScriptSound::isFinished(void):bool \nReturns true if the sound has finished playing; otherwise returns false.
+ScriptSound::play(void):void \nStarts playing the sound specified by this QSound object.
+ScriptSound::stop(void):void \nStops the sound playing.

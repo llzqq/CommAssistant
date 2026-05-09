@@ -1,0 +1,59 @@
+ScriptPlotWindow::setEnabled(bool isEnabled):void \nEnables or disables the widget.
+ScriptPlotWindow::update(void):void \nUpdates the widget.
+ScriptPlotWindow::repaint(void):void \nRepaints the widget.
+ScriptPlotWindow::show(void):void \nShows the widget.
+ScriptPlotWindow::close(void):void \nCloses the widget.
+ScriptPlotWindow::hide(void):void \nHides the widget.
+ScriptPlotWindow::setWindowTitle(String title)_void \nSets the window title.
+ScriptPlotWindow::windowPositionAndSize(void):String \nReturns the window size and position (Pixel).The return string has following format:\n"top left x, top left y, width, height"
+ScriptPlotWindow::setWindowPositionAndSize(String positionAndSize):void \nSets the position and the size of a window). String format:\n"top left x, top left y, width, height".
+ScriptPlotWindow::setBackgroundColor(String color):void \nSets the background color of a script gui element. Possible colors are:\nblack, white, darkGray, lightGray, darkRed, red, green, blue, cyan, magenta, darkGreen, darkBlue, darkCyan, darkMagenta, darkYellow and yellow.\nNote:\nFore some GUI elements (like the RadioButton) setAutoFillBackground must be called if the background color shall be changed and\nfor some other GUI elements (like the CheckBox) the background color cannot be changed.
+ScriptPlotWindow::setWindowTextColor(String color):void \nSets the window text color of a script gui element. Possible colors are:\nblack, white, darkGray, lightGray, darkRed, red, green, blue, cyan, magenta, darkGreen, darkBlue, darkCyan, darkMagenta, darkYellow and yellow.
+ScriptPlotWindow::setTextColor(String color):void \nSets the text color of a script gui element. Possible colors are:\nblack, white, darkGray, lightGray, darkRed, red, green, blue, cyan, magenta, darkGreen, darkBlue, darkCyan, darkMagenta, darkYellow and yellow.
+ScriptPlotWindow::setPaletteColor(String palette, String color):void \nSets a palette color of a script gui element.\nPossible palette values are: Base, Button, WindowText, Window, Text and ButtonText.\nPossible colors are: black, white, darkGray, lige, cyan, magenta and yellow.
+ScriptPlotWindow::setPaletteColorRgb(Number red, Number green, Number blue, String palette):void \nSets a palette color of a script gui element. Possible palette values are:\nBase, Button, WindowText, Window, Text and ButtonText.
+ScriptPlotWindow::setToolTip(String text, Number duration):void \nSets the tool tip of the script gui element.\nIf the duration is -1 (default) the duration is calculated depending on the length of the tool tip.
+ScriptPlotWindow::isVisible(void):bool \nReturn true, if the widget is visible.
+ScriptPlotWindow::raise(void):void \nRaises this widget to the top of the parent widget's stack.
+ScriptPlotWindow::lower(void):void \nLowers the widget to the bottom of the parent widget's stack.
+ScriptPlotWindow::setWindowFlags(Number flags):void \nSets the window flags.\nNote: ScriptWidget::show must be called after a setWindowFlags call.
+ScriptPlotWindow::clearWindowFlags(Number flags):void \nClears the given window flags.\nNote: ScriptWidget::show must be called after a clearWindowFlags call.
+ScriptPlotWindow::windowFlags(void):Number \nReturns the window flags.
+ScriptPlotWindow::setFocus(void):void \nGives the keyboard input focus to this widget.
+ScriptPlotWindow::width(void):Number \nReturns the width of the widget excluding any window frame.
+ScriptPlotWindow::height(void):Number \nReturns the height of the widget excluding any window frame.
+ScriptPlotWindow::getWidgetPointer(void):QWidget* \nReturns the widget pointer.
+ScriptPlotWindow::setAdditionalData(Number key, String data):void \nSets/stores an additional data entry.
+ScriptPlotWindow::getAdditionalData(Number key):String \nReturns an additional data entry.
+ScriptPlotWindow::blockSignals(bool block):bool \nIf block is true, signals emitted by this object are blocked\n(i.e., emitting a signal will not invoke anything connected to it).\nIf block is false, no such blocking will occur.\nThe return value is the previous value of the blocking state.
+ScriptPlotWindow::getClassName(void):String \nReturns the class name of this object.
+ScriptPlotWindow::getObjectName(void):String \nReturns the name of this object (UI_'object name in the ui file').\nNote: This function returns only a not empty string for GUI elements from ui files\nor if the function setObjectName has been called for the current object.
+ScriptPlotWindow::setObjectName(String name):void \nSets the name of the current object (can be retrieved with getObjectName).
+ScriptPlotWindow::addGraph(String color, String penStyle, String name, bool useYAxis2 = false):Number \nThis function adds a graph to the diagram.
+ScriptPlotWindow::getDataFromGraph(Number graphIndex, Number xStart, Number count):Array<ScriptPlotDataPoint> \nThis function returns several data points from a graph.\nIf count is negative then this function grabs the values before the specified x coordinate value.
+ScriptPlotWindow::setInitialAxisRanges(Number xRange, Number yMinValue, Number ymaxValue, bool addSpaceAfterBiggestValues=true, Number y2MinValue=0, Number y2MaxValue=0):void \nThis function sets the initial ranges of the diagram.
+ScriptPlotWindow::setCurrentAxisRanges(Number xMinValue, Number xMaxValue, Number yMinValue, Number yMaxValue, Number y2MinValue=0, Number y2MaxValue=0):void \nThe function sets the current ranges of the diagram.\nAutomatic update should be disabled  (see setAutoUpdateEnabled).
+ScriptPlotWindow::getCurrentAxisRanges(void):Object \nReturns an object wich holds the current view ranges of the diagram.\nUseful if the user moves or zoom the view.
+ScriptPlotWindow::addDataToGraph(Number graphIndex, Number x, Number y, bool force=false):void \nThis function adds one point to a graph.\nIf force is true then the data is added even if auto update is disabled (setAutoUpdateEnabled).
+ScriptPlotWindow::setLineWidth(Number graphIndex, Number width):void \nThis function sets the line width in pixel of a graph.
+ScriptPlotWindow::setAxisLabels(String xAxisLabel, String yAxisLabel, String yAxis2Label=""):void \nSets the axis label.
+ScriptPlotWindow::showLegend(bool show):void \nThis function shows or hides the diagram legend.
+ScriptPlotWindow::clearGraphs(void):void \nThis function clears the data of all graphs.
+ScriptPlotWindow::removeAllGraphs(void):void \nThis function removes all graphs.
+ScriptPlotWindow::showHelperElements(bool showXRange, bool showYRange, bool showUpdate, bool showSave, bool showLoad, bool showClear, bool showGraphVisibility, Number graphVisibilityMaxSize=100, bool showLegend=true):void \nSets the visibility of several plot widget elements.
+ScriptPlotWindow::setMaxDataPointsPerGraph(Number maxDataPointsPerGraph):void \nSets tThe max. number of data points per graph (the default is 10.000.000).
+ScriptPlotWindow::setAutoUpdateEnabled(bool enabled):void \nSets the automatic update enabled state.
+ScriptPlotWindow::isAutoUpdateEnabled(void):bool \nReturns the automatic update enabled state.
+ScriptPlotWindow::setUpdateInterval(Number updateInterval):void \nSets the update-interval.
+ScriptPlotWindow::updatePlot(void):void \nRepaints the plot window.
+ScriptPlotWindow::setWindowIcon(String iconFile, bool isRelativePath=true):void \nSets the window icon of a dialog or a main window.\nSupported formats: .ico, .gif, .png, .jpeg, .tiff, .bmp, .icns.
+ScriptPlotWindow::setScatterStyle(Number graphIndex, String style, Number size):void \nSets the visual appearance of single data points in the plot.\nPossible values for style:\nNone: No scatter symbols are drawn.\nDot: A single pixel.\nCross: A cross.\nPlus: A plus.\nCircle: A circle.\nDisc: A circle which is filled with the pen's color.\nSquare: A square.\nDiamond: A diamond.\nStar: A star with eight arms, i.e. a combination of cross and plus.\nTriangle: An equilateral triangle, standing on baseline.\nTriangleInverted: An equilateral triangle, standing on corner.\nCrossSquare: A square with a cross inside.\nPlusSquare: A square with a plus inside.\nCrossCircle: A circle with a cross inside.\nPlusCircle: A circle with a plus inside.\nPeace: A circle, with one vertical and two downward diagonal lines.
+ScriptPlotWindow::setLineStyle(Number graphIndex, String style):void \nSets the line style of a graph.\nPossible values for style:\n None: Data points are not connected with any lines (e.g. data only represented with symbols according to the scatter style (is set with setScatterStyle)).\n Line: Data points are connected by a straight line.\n StepLeft: Line is drawn as steps where the step height is the value of the left data point.\n StepRight: Line is drawn as steps where the step height is the value of the right data point.\n StepCenter: Line is drawn as steps where the step is in between two data points.\n Impulse: Each data point is represented by a line parallel to the value axis, which reaches from the data point to the zero-value-line.
+ScriptPlotWindow::removeDataRangeFromGraph(Number graphIndex, Number xFrom, Number xTo, bool force=false):void \nRemoves all data points with (sort-)keys between xFrom and xTo.\nIf xFrom is greater or equal to xTo, the function does nothing.\nIf force is true then the data is removed even if auto update is disabled (setAutoUpdateEnabled).
+ScriptPlotWindow::saveAllGraphs(String fileName):bool \nThis function saves all displayed graphs to a file.\nPossible file extensions are: png, jpg, bmp, pdf, csv.\nIf fileName has no or an invalid file extension then a file with comma separated values is created.
+ScriptPlotWindow::showDateTimeAtXAxis(String format):void \nIf called the x values are interpreted as seconds (the decimal places are the milliseconds) that have passed since\n970-01-01T00:00:00.000, Coordinated Universal Time (and the corresponding date time is shown).\nSee QDateTime::toString for more details on the format string.
+ScriptPlotWindow::setLocale(Number language, Number country):void \nSets the locale of the script plot window (QLocale::Language, QLocale::Country).
+ScriptPlotWindow::plotMousePressSignal.connect(Number xValue, Number yValue, Number mouseButton) \nIs emitted if the user press a mouse button inside the plot.\nNote: mouseButton has the type Qt::MouseButton.
+ScriptPlotWindow::clearButtonPressedSignal.connect(void) \nIs emitted if the user clicks the clear button.
+ScriptPlotWindow::closedSignal.connect(void) \nThis signal is emitted if the plot window has been closed.
+ScriptPlotWindow::xRangeChangedSignal.connect(Number newValue) \nIs emitted if the user changes the value in the x-range textedit.

@@ -1,0 +1,26 @@
+ScriptGroupBox::setEnabled(bool isEnabled):void \nEnables or disables the widget.
+ScriptGroupBox::hide(void):void \nHides the widget.
+ScriptGroupBox::show(void):void \nShows the widget.
+ScriptGroupBox::setBackgroundColor(String color):void \nSets the background color of a script gui element. Possible colors are:\nblack, white, darkGray, lightGray, darkRed, red, green, blue, cyan, magenta, darkGreen, darkBlue, darkCyan, darkMagenta, darkYellow and yellow.\nNote:\nFore some GUI elements (like the RadioButton) setAutoFillBackground must be called if the background color shall be changed and\nfor some other GUI elements (like the CheckBox) the background color cannot be changed.
+ScriptGroupBox::setWindowTextColor(String color):void \nSets the window text color of a script gui element. Possible colors are:\nblack, white, darkGray, lightGray, darkRed, red, green, blue, cyan, magenta, darkGreen, darkBlue, darkCyan, darkMagenta, darkYellow and yellow.
+ScriptGroupBox::setTextColor(String color):void \nSets the text color of a script gui element. Possible colors are:\nblack, white, darkGray, lightGray, darkRed, red, green, blue, cyan, magenta, darkGreen, darkBlue, darkCyan, darkMagenta, darkYellow and yellow.
+ScriptGroupBox::setPaletteColor(String palette, String color):void \nSets a palette color of a script gui element.\nPossible palette values are: Base, Button, WindowText, Window, Text and ButtonText.\nPossible colors are: black, white, darkGray, lige, cyan, magenta and yellow.
+ScriptGroupBox::setPaletteColorRgb(Number red, Number green, Number blue, String palette):void \nSets a palette color of a script gui element. Possible palette values are:\nBase, Button, WindowText, Window, Text and ButtonText.
+ScriptGroupBox::setToolTip(String text, Number duration):void \nSets the tool tip of the script gui element.\nIf the duration is -1 (default) the duration is calculated depending on the length of the tool tip.
+ScriptGroupBox::isVisible(void):bool \nReturn true, if the widget is visible.
+ScriptGroupBox::setFocus(void):void \nGives the keyboard input focus to this widget.
+ScriptGroupBox::width(void):Number \nReturns the width of the widget excluding any window frame.
+ScriptGroupBox::height(void):Number \nReturns the height of the widget excluding any window frame.
+ScriptGroupBox::setAdditionalData(Number key, String data):void \nSets/stores an additional data entry.
+ScriptGroupBox::getAdditionalData(Number key):String \nReturns an additional data entry.
+ScriptGroupBox::blockSignals(bool block):bool \nIf block is true, signals emitted by this object are blocked\n(i.e., emitting a signal will not invoke anything connected to it).\nIf block is false, no such blocking will occur.\nThe return value is the previous value of the blocking state.
+ScriptGroupBox::getClassName(void):String \nReturns the class name of this object.
+ScriptGroupBox::getObjectName(void):String \nReturns the name of this object (UI_'object name in the ui file').\nNote: This function returns only a not empty string for GUI elements from ui files\nor if the function setObjectName has been called for the current object.
+ScriptGroupBox::setObjectName(String name):void \nSets the name of the current object (can be retrieved with getObjectName).
+ScriptGroupBox::setTitle(String title):void \nSets the group box title.
+ScriptGroupBox::title(void):String \nReturns the group box title.
+ScriptGroupBox::setAutoFillBackground(bool enabled):void \nThis property holds whether the widget background is filled automatically.\nIf enabled, this property will cause Qt to fill the background of the widget before invoking the paint event.\nNote:\nSome GUI elements (like the RadioButton) need this property set to true if the background color shall be changed with setBackgroundColor.
+ScriptGroupBox::addPlotWidget(void):ScriptPlotWidget \nAdds a plot widget to the group box.
+ScriptGroupBox::setChecked(bool checked):void \nChecks or unchecks the group box checkbox.
+ScriptGroupBox::isChecked(void):bool \nReturns true if the groub box check box is checked.
+ScriptGroupBox::checkBoxClickedSignal.connect(bool checked) \nIs emitted if the group box checkbox is clicked.

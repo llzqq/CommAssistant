@@ -1,0 +1,1561 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ui version="4.0">
+ <class>Dialog</class>
+ <widget class="QDialog" name="Dialog">
+  <property name="geometry">
+   <rect>
+    <x>0</x>
+    <y>0</y>
+    <width>1391</width>
+    <height>877</height>
+   </rect>
+  </property>
+  <property name="windowTitle">
+   <string>send user input example</string>
+  </property>
+  <layout class="QVBoxLayout" name="verticalLayout">
+   <item>
+    <widget class="QTabWidget" name="TabWidget">
+     <property name="sizePolicy">
+      <sizepolicy hsizetype="Ignored" vsizetype="Expanding">
+       <horstretch>0</horstretch>
+       <verstretch>0</verstretch>
+      </sizepolicy>
+     </property>
+     <property name="currentIndex">
+      <number>0</number>
+     </property>
+     <widget class="QWidget" name="tabAardvarkI2cSpi">
+      <attribute name="title">
+       <string>AardvarkI2cSpi</string>
+      </attribute>
+      <layout class="QVBoxLayout" name="verticalLayout_14">
+       <item>
+        <widget class="QScrollArea" name="scrollArea_9">
+         <property name="widgetResizable">
+          <bool>true</bool>
+         </property>
+         <widget class="QWidget" name="scrollAreaWidgetContents_9">
+          <property name="geometry">
+           <rect>
+            <x>0</x>
+            <y>0</y>
+            <width>1453</width>
+            <height>770</height>
+           </rect>
+          </property>
+          <layout class="QGridLayout" name="gridLayout_3">
+           <item row="0" column="0">
+            <widget class="QGroupBox" name="groupBox_10">
+             <property name="title">
+              <string>device configuration</string>
+             </property>
+             <layout class="QGridLayout" name="gridLayout_14">
+              <item row="3" column="1">
+               <widget class="QComboBox" name="AardvarkI2cSpi5V">
+                <item>
+                 <property name="text">
+                  <string>Off</string>
+                 </property>
+                </item>
+                <item>
+                 <property name="text">
+                  <string>On</string>
+                 </property>
+                </item>
+               </widget>
+              </item>
+              <item row="6" column="1">
+               <spacer name="verticalSpacer_8">
+                <property name="orientation">
+                 <enum>Qt::Orientation::Vertical</enum>
+                </property>
+                <property name="sizeHint" stdset="0">
+                 <size>
+                  <width>20</width>
+                  <height>3</height>
+                 </size>
+                </property>
+               </spacer>
+              </item>
+              <item row="4" column="1">
+               <widget class="QPushButton" name="AardvarkI2cSpiScan">
+                <property name="text">
+                 <string>scan</string>
+                </property>
+               </widget>
+              </item>
+              <item row="2" column="1">
+               <widget class="QComboBox" name="AardvarkI2cSpiMode">
+                <property name="sizePolicy">
+                 <sizepolicy hsizetype="Preferred" vsizetype="Fixed">
+                  <horstretch>0</horstretch>
+                  <verstretch>0</verstretch>
+                 </sizepolicy>
+                </property>
+                <item>
+                 <property name="text">
+                  <string>I2C Master</string>
+                 </property>
+                </item>
+                <item>
+                 <property name="text">
+                  <string>I2C Slave</string>
+                 </property>
+                </item>
+                <item>
+                 <property name="text">
+                  <string>SPI Master</string>
+                 </property>
+                </item>
+                <item>
+                 <property name="text">
+                  <string>SPI Slave</string>
+                 </property>
+                </item>
+                <item>
+                 <property name="text">
+                  <string>GPIO</string>
+                 </property>
+                </item>
+               </widget>
+              </item>
+              <item row="1" column="1">
+               <widget class="QLineEdit" name="AardvarkI2cSpiPort">
+                <property name="sizePolicy">
+                 <sizepolicy hsizetype="Ignored" vsizetype="Fixed">
+                  <horstretch>0</horstretch>
+                  <verstretch>0</verstretch>
+                 </sizepolicy>
+                </property>
+                <property name="maximumSize">
+                 <size>
+                  <width>16777215</width>
+                  <height>16777215</height>
+                 </size>
+                </property>
+                <property name="text">
+                 <string>0</string>
+                </property>
+               </widget>
+              </item>
+              <item row="1" column="0">
+               <widget class="QLabel" name="label_29">
+                <property name="text">
+                 <string>port</string>
+                </property>
+               </widget>
+              </item>
+              <item row="1" column="2">
+               <spacer name="horizontalSpacer_11">
+                <property name="orientation">
+                 <enum>Qt::Orientation::Horizontal</enum>
+                </property>
+                <property name="sizeType">
+                 <enum>QSizePolicy::Policy::Fixed</enum>
+                </property>
+                <property name="sizeHint" stdset="0">
+                 <size>
+                  <width>20</width>
+                  <height>20</height>
+                 </size>
+                </property>
+               </spacer>
+              </item>
+              <item row="2" column="0">
+               <widget class="QLabel" name="label_30">
+                <property name="text">
+                 <string>mode      </string>
+                </property>
+               </widget>
+              </item>
+              <item row="3" column="0">
+               <widget class="QLabel" name="label_31">
+                <property name="text">
+                 <string>5V Pin 4/6</string>
+                </property>
+               </widget>
+              </item>
+              <item row="7" column="1">
+               <widget class="QPushButton" name="AardvarkI2cConnect">
+                <property name="text">
+                 <string>connect</string>
+                </property>
+               </widget>
+              </item>
+             </layout>
+            </widget>
+           </item>
+           <item row="0" column="1">
+            <widget class="QGroupBox" name="groupBox_11">
+             <property name="title">
+              <string>i2c configuration</string>
+             </property>
+             <layout class="QGridLayout" name="gridLayout_16">
+              <item row="3" column="1">
+               <widget class="QPushButton" name="AardvarkI2cFreeBus">
+                <property name="text">
+                 <string>free bus</string>
+                </property>
+               </widget>
+              </item>
+              <item row="0" column="1">
+               <widget class="QLineEdit" name="AardvarkI2cBaudrate">
+                <property name="sizePolicy">
+                 <sizepolicy hsizetype="Ignored" vsizetype="Fixed">
+                  <horstretch>0</horstretch>
+                  <verstretch>0</verstretch>
+                 </sizepolicy>
+                </property>
+                <property name="maximumSize">
+                 <size>
+                  <width>16777215</width>
+                  <height>16777215</height>
+                 </size>
+                </property>
+                <property name="text">
+                 <string>400</string>
+                </property>
+               </widget>
+              </item>
+              <item row="0" column="0">
+               <widget class="QLabel" name="label_35">
+                <property name="text">
+                 <string>baudrate (kHz)</string>
+                </property>
+               </widget>
+              </item>
+              <item row="2" column="1">
+               <widget class="QComboBox" name="AardvarkI2cPullUp">
+                <item>
+                 <property name="text">
+                  <string>On</string>
+                 </property>
+                </item>
+                <item>
+                 <property name="text">
+                  <string>Off</string>
+                 </property>
+                </item>
+               </widget>
+              </item>
+              <item row="2" column="0">
+               <widget class="QLabel" name="label_36">
+                <property name="text">
+                 <string>pullups</string>
+                </property>
+               </widget>
+              </item>
+              <item row="0" column="2" rowspan="4">
+               <spacer name="horizontalSpacer_13">
+                <property name="orientation">
+                 <enum>Qt::Orientation::Horizontal</enum>
+                </property>
+                <property name="sizeHint" stdset="0">
+                 <size>
+                  <width>111</width>
+                  <height>20</height>
+                 </size>
+                </property>
+               </spacer>
+              </item>
+              <item row="4" column="1">
+               <spacer name="verticalSpacer_11">
+                <property name="orientation">
+                 <enum>Qt::Orientation::Vertical</enum>
+                </property>
+                <property name="sizeHint" stdset="0">
+                 <size>
+                  <width>20</width>
+                  <height>40</height>
+                 </size>
+                </property>
+               </spacer>
+              </item>
+              <item row="1" column="1">
+               <widget class="QLineEdit" name="AardvarkI2cSlaveAddress">
+                <property name="sizePolicy">
+                 <sizepolicy hsizetype="Ignored" vsizetype="Fixed">
+                  <horstretch>0</horstretch>
+                  <verstretch>0</verstretch>
+                 </sizepolicy>
+                </property>
+                <property name="text">
+                 <string>0</string>
+                </property>
+               </widget>
+              </item>
+              <item row="1" column="0">
+               <widget class="QLabel" name="label_3">
+                <property name="text">
+                 <string>slave address</string>
+                </property>
+               </widget>
+              </item>
+             </layout>
+            </widget>
+           </item>
+           <item row="0" column="2" colspan="2">
+            <widget class="QGroupBox" name="groupBox_12">
+             <property name="title">
+              <string>spi configuration</string>
+             </property>
+             <layout class="QGridLayout" name="gridLayout_15">
+              <item row="1" column="1">
+               <widget class="QComboBox" name="AardvarkSpiPhase">
+                <property name="sizeAdjustPolicy">
+                 <enum>QComboBox::SizeAdjustPolicy::AdjustToContents</enum>
+                </property>
+                <item>
+                 <property name="text">
+                  <string>Sample/Setup</string>
+                 </property>
+                </item>
+                <item>
+                 <property name="text">
+                  <string>Setup/Sample</string>
+                 </property>
+                </item>
+               </widget>
+              </item>
+              <item row="4" column="1">
+               <spacer name="verticalSpacer_10">
+                <property name="orientation">
+                 <enum>Qt::Orientation::Vertical</enum>
+                </property>
+                <property name="sizeHint" stdset="0">
+                 <size>
+                  <width>20</width>
+                  <height>40</height>
+                 </size>
+                </property>
+               </spacer>
+              </item>
+              <item row="0" column="1">
+               <widget class="QComboBox" name="AardvarkSpiPolarity">
+                <property name="sizeAdjustPolicy">
+                 <enum>QComboBox::SizeAdjustPolicy::AdjustToContents</enum>
+                </property>
+                <item>
+                 <property name="text">
+                  <string>Rising/Falling</string>
+                 </property>
+                </item>
+                <item>
+                 <property name="text">
+                  <string>Falling/Rising</string>
+                 </property>
+                </item>
+               </widget>
+              </item>
+              <item row="2" column="0">
+               <widget class="QLabel" name="label_34">
+                <property name="text">
+                 <string>baudrate (kHz)</string>
+                </property>
+               </widget>
+              </item>
+              <item row="0" column="4" rowspan="3">
+               <spacer name="horizontalSpacer_12">
+                <property name="orientation">
+                 <enum>Qt::Orientation::Horizontal</enum>
+                </property>
+                <property name="sizeHint" stdset="0">
+                 <size>
+                  <width>124</width>
+                  <height>20</height>
+                 </size>
+                </property>
+               </spacer>
+              </item>
+              <item row="0" column="0">
+               <widget class="QLabel" name="label_33">
+                <property name="text">
+                 <string>polarity</string>
+                </property>
+               </widget>
+              </item>
+              <item row="2" column="1">
+               <widget class="QLineEdit" name="AardvarkSpiBaudrate">
+                <property name="sizePolicy">
+                 <sizepolicy hsizetype="Ignored" vsizetype="Fixed">
+                  <horstretch>0</horstretch>
+                  <verstretch>0</verstretch>
+                 </sizepolicy>
+                </property>
+                <property name="maximumSize">
+                 <size>
+                  <width>16777215</width>
+                  <height>16777215</height>
+                 </size>
+                </property>
+                <property name="text">
+                 <string>1000</string>
+                </property>
+               </widget>
+              </item>
+              <item row="1" column="0">
+               <widget class="QLabel" name="label_51">
+                <property name="text">
+                 <string>phase</string>
+                </property>
+               </widget>
+              </item>
+              <item row="0" column="3">
+               <widget class="QComboBox" name="AardvarkSpiSSPolarity">
+                <item>
+                 <property name="text">
+                  <string>Active Low</string>
+                 </property>
+                </item>
+                <item>
+                 <property name="text">
+                  <string>Active High</string>
+                 </property>
+                </item>
+               </widget>
+              </item>
+              <item row="0" column="2">
+               <widget class="QLabel" name="label_40">
+                <property name="text">
+                 <string>ss polarity</string>
+                </property>
+               </widget>
+              </item>
+              <item row="1" column="3">
+               <widget class="QComboBox" name="AardvarkSpiBitorder">
+                <item>
+                 <property name="text">
+                  <string>MSB</string>
+                 </property>
+                </item>
+                <item>
+                 <property name="text">
+                  <string>LSB</string>
+                 </property>
+                </item>
+               </widget>
+              </item>
+              <item row="1" column="2">
+               <widget class="QLabel" name="label_32">
+                <property name="text">
+                 <string>bitorder</string>
+                </property>
+               </widget>
+              </item>
+             </layout>
+            </widget>
+           </item>
+           <item row="0" column="4">
+            <widget class="QGroupBox" name="groupBox_13">
+             <property name="title">
+              <string>gpio</string>
+             </property>
+             <layout class="QGridLayout" name="gridLayout_17">
+              <item row="3" column="0">
+               <widget class="QLabel" name="label_43">
+                <property name="text">
+                 <string>in value</string>
+                </property>
+               </widget>
+              </item>
+              <item row="1" column="2">
+               <spacer name="horizontalSpacer_16">
+                <property name="orientation">
+                 <enum>Qt::Orientation::Horizontal</enum>
+                </property>
+                <property name="sizeType">
+                 <enum>QSizePolicy::Policy::Fixed</enum>
+                </property>
+                <property name="sizeHint" stdset="0">
+                 <size>
+                  <width>10</width>
+                  <height>20</height>
+                 </size>
+                </property>
+               </spacer>
+              </item>
+              <item row="0" column="7">
+               <widget class="QLabel" name="label_47">
+                <property name="text">
+                 <string>Pin7/SCK</string>
+                </property>
+               </widget>
+              </item>
+              <item row="2" column="3">
+               <widget class="QComboBox" name="AardvarkGpioOutValue5">
+                <item>
+                 <property name="text">
+                  <string>0</string>
+                 </property>
+                </item>
+                <item>
+                 <property name="text">
+                  <string>1</string>
+                 </property>
+                </item>
+               </widget>
+              </item>
+              <item row="2" column="9">
+               <widget class="QComboBox" name="AardvarkGpioOutValue2">
+                <item>
+                 <property name="text">
+                  <string>0</string>
+                 </property>
+                </item>
+                <item>
+                 <property name="text">
+                  <string>1</string>
+                 </property>
+                </item>
+               </widget>
+              </item>
+              <item row="3" column="13">
+               <widget class="QLineEdit" name="AardvarkGpioInValue0">
+                <property name="sizePolicy">
+                 <sizepolicy hsizetype="Ignored" vsizetype="Fixed">
+                  <horstretch>0</horstretch>
+                  <verstretch>0</verstretch>
+                 </sizepolicy>
+                </property>
+                <property name="readOnly">
+                 <bool>true</bool>
+                </property>
+               </widget>
+              </item>
+              <item row="3" column="5">
+               <widget class="QLineEdit" name="AardvarkGpioInValue4">
+                <property name="sizePolicy">
+                 <sizepolicy hsizetype="Ignored" vsizetype="Fixed">
+                  <horstretch>0</horstretch>
+                  <verstretch>0</verstretch>
+                 </sizepolicy>
+                </property>
+                <property name="readOnly">
+                 <bool>true</bool>
+                </property>
+               </widget>
+              </item>
+              <item row="3" column="9">
+               <widget class="QLineEdit" name="AardvarkGpioInValue2">
+                <property name="sizePolicy">
+                 <sizepolicy hsizetype="Ignored" vsizetype="Fixed">
+                  <horstretch>0</horstretch>
+                  <verstretch>0</verstretch>
+                 </sizepolicy>
+                </property>
+                <property name="readOnly">
+                 <bool>true</bool>
+                </property>
+               </widget>
+              </item>
+              <item row="3" column="7">
+               <widget class="QLineEdit" name="AardvarkGpioInValue3">
+                <property name="sizePolicy">
+                 <sizepolicy hsizetype="Ignored" vsizetype="Fixed">
+                  <horstretch>0</horstretch>
+                  <verstretch>0</verstretch>
+                 </sizepolicy>
+                </property>
+                <property name="readOnly">
+                 <bool>true</bool>
+                </property>
+               </widget>
+              </item>
+              <item row="1" column="11">
+               <widget class="QComboBox" name="AardvarkGpioMode1">
+                <item>
+                 <property name="text">
+                  <string>in</string>
+                 </property>
+                </item>
+                <item>
+                 <property name="text">
+                  <string>out</string>
+                 </property>
+                </item>
+                <item>
+                 <property name="text">
+                  <string>in pullup</string>
+                 </property>
+                </item>
+               </widget>
+              </item>
+              <item row="1" column="5">
+               <widget class="QComboBox" name="AardvarkGpioMode4">
+                <item>
+                 <property name="text">
+                  <string>in</string>
+                 </property>
+                </item>
+                <item>
+                 <property name="text">
+                  <string>out</string>
+                 </property>
+                </item>
+                <item>
+                 <property name="text">
+                  <string>in pullup</string>
+                 </property>
+                </item>
+               </widget>
+              </item>
+              <item row="0" column="13">
+               <widget class="QLabel" name="label_50">
+                <property name="text">
+                 <string>Pin1/SCL</string>
+                </property>
+               </widget>
+              </item>
+              <item row="0" column="3">
+               <widget class="QLabel" name="label_45">
+                <property name="text">
+                 <string>Pin9/SS0</string>
+                </property>
+               </widget>
+              </item>
+              <item row="3" column="11">
+               <widget class="QLineEdit" name="AardvarkGpioInValue1">
+                <property name="sizePolicy">
+                 <sizepolicy hsizetype="Ignored" vsizetype="Fixed">
+                  <horstretch>0</horstretch>
+                  <verstretch>0</verstretch>
+                 </sizepolicy>
+                </property>
+                <property name="readOnly">
+                 <bool>true</bool>
+                </property>
+               </widget>
+              </item>
+              <item row="3" column="3">
+               <widget class="QLineEdit" name="AardvarkGpioInValue5">
+                <property name="sizePolicy">
+                 <sizepolicy hsizetype="Ignored" vsizetype="Fixed">
+                  <horstretch>0</horstretch>
+                  <verstretch>0</verstretch>
+                 </sizepolicy>
+                </property>
+                <property name="readOnly">
+                 <bool>true</bool>
+                </property>
+               </widget>
+              </item>
+              <item row="1" column="0">
+               <widget class="QLabel" name="label_41">
+                <property name="text">
+                 <string>mode</string>
+                </property>
+               </widget>
+              </item>
+              <item row="1" column="3">
+               <widget class="QComboBox" name="AardvarkGpioMode5">
+                <item>
+                 <property name="text">
+                  <string>in</string>
+                 </property>
+                </item>
+                <item>
+                 <property name="text">
+                  <string>out</string>
+                 </property>
+                </item>
+                <item>
+                 <property name="text">
+                  <string>in pullup</string>
+                 </property>
+                </item>
+               </widget>
+              </item>
+              <item row="1" column="13">
+               <widget class="QComboBox" name="AardvarkGpioMode0">
+                <item>
+                 <property name="text">
+                  <string>in</string>
+                 </property>
+                </item>
+                <item>
+                 <property name="text">
+                  <string>out</string>
+                 </property>
+                </item>
+                <item>
+                 <property name="text">
+                  <string>in pullup</string>
+                 </property>
+                </item>
+               </widget>
+              </item>
+              <item row="2" column="11">
+               <widget class="QComboBox" name="AardvarkGpioOutValue1">
+                <item>
+                 <property name="text">
+                  <string>0</string>
+                 </property>
+                </item>
+                <item>
+                 <property name="text">
+                  <string>1</string>
+                 </property>
+                </item>
+               </widget>
+              </item>
+              <item row="2" column="5">
+               <widget class="QComboBox" name="AardvarkGpioOutValue4">
+                <item>
+                 <property name="text">
+                  <string>0</string>
+                 </property>
+                </item>
+                <item>
+                 <property name="text">
+                  <string>1</string>
+                 </property>
+                </item>
+               </widget>
+              </item>
+              <item row="1" column="7">
+               <widget class="QComboBox" name="AardvarkGpioMode3">
+                <item>
+                 <property name="text">
+                  <string>in</string>
+                 </property>
+                </item>
+                <item>
+                 <property name="text">
+                  <string>out</string>
+                 </property>
+                </item>
+                <item>
+                 <property name="text">
+                  <string>in pullup</string>
+                 </property>
+                </item>
+               </widget>
+              </item>
+              <item row="1" column="9">
+               <widget class="QComboBox" name="AardvarkGpioMode2">
+                <item>
+                 <property name="text">
+                  <string>in</string>
+                 </property>
+                </item>
+                <item>
+                 <property name="text">
+                  <string>out</string>
+                 </property>
+                </item>
+                <item>
+                 <property name="text">
+                  <string>in pullup</string>
+                 </property>
+                </item>
+               </widget>
+              </item>
+              <item row="0" column="0">
+               <widget class="QLabel" name="label_39">
+                <property name="text">
+                 <string>pin</string>
+                </property>
+               </widget>
+              </item>
+              <item row="0" column="11">
+               <widget class="QLabel" name="label_49">
+                <property name="text">
+                 <string>Pin3/SDA</string>
+                </property>
+               </widget>
+              </item>
+              <item row="0" column="5">
+               <widget class="QLabel" name="label_46">
+                <property name="text">
+                 <string>Pin8/MOSI</string>
+                </property>
+               </widget>
+              </item>
+              <item row="2" column="0">
+               <widget class="QLabel" name="label_42">
+                <property name="text">
+                 <string>out value</string>
+                </property>
+               </widget>
+              </item>
+              <item row="2" column="7">
+               <widget class="QComboBox" name="AardvarkGpioOutValue3">
+                <item>
+                 <property name="text">
+                  <string>0</string>
+                 </property>
+                </item>
+                <item>
+                 <property name="text">
+                  <string>1</string>
+                 </property>
+                </item>
+               </widget>
+              </item>
+              <item row="0" column="14">
+               <spacer name="horizontalSpacer_14">
+                <property name="orientation">
+                 <enum>Qt::Orientation::Horizontal</enum>
+                </property>
+                <property name="sizeHint" stdset="0">
+                 <size>
+                  <width>40</width>
+                  <height>20</height>
+                 </size>
+                </property>
+               </spacer>
+              </item>
+              <item row="0" column="9">
+               <widget class="QLabel" name="label_48">
+                <property name="text">
+                 <string>Pin5/MISO</string>
+                </property>
+               </widget>
+              </item>
+              <item row="2" column="13">
+               <widget class="QComboBox" name="AardvarkGpioOutValue0">
+                <item>
+                 <property name="text">
+                  <string>0</string>
+                 </property>
+                </item>
+                <item>
+                 <property name="text">
+                  <string>1</string>
+                 </property>
+                </item>
+               </widget>
+              </item>
+              <item row="4" column="0">
+               <spacer name="verticalSpacer_12">
+                <property name="orientation">
+                 <enum>Qt::Orientation::Vertical</enum>
+                </property>
+                <property name="sizeHint" stdset="0">
+                 <size>
+                  <width>20</width>
+                  <height>40</height>
+                 </size>
+                </property>
+               </spacer>
+              </item>
+              <item row="1" column="12">
+               <spacer name="horizontalSpacer_22">
+                <property name="orientation">
+                 <enum>Qt::Orientation::Horizontal</enum>
+                </property>
+                <property name="sizeType">
+                 <enum>QSizePolicy::Policy::Fixed</enum>
+                </property>
+                <property name="sizeHint" stdset="0">
+                 <size>
+                  <width>10</width>
+                  <height>20</height>
+                 </size>
+                </property>
+               </spacer>
+              </item>
+              <item row="1" column="6">
+               <spacer name="horizontalSpacer_19">
+                <property name="orientation">
+                 <enum>Qt::Orientation::Horizontal</enum>
+                </property>
+                <property name="sizeType">
+                 <enum>QSizePolicy::Policy::Fixed</enum>
+                </property>
+                <property name="sizeHint" stdset="0">
+                 <size>
+                  <width>10</width>
+                  <height>20</height>
+                 </size>
+                </property>
+               </spacer>
+              </item>
+              <item row="1" column="10">
+               <spacer name="horizontalSpacer_21">
+                <property name="orientation">
+                 <enum>Qt::Orientation::Horizontal</enum>
+                </property>
+                <property name="sizeType">
+                 <enum>QSizePolicy::Policy::Fixed</enum>
+                </property>
+                <property name="sizeHint" stdset="0">
+                 <size>
+                  <width>10</width>
+                  <height>20</height>
+                 </size>
+                </property>
+               </spacer>
+              </item>
+              <item row="1" column="1">
+               <spacer name="horizontalSpacer_15">
+                <property name="orientation">
+                 <enum>Qt::Orientation::Horizontal</enum>
+                </property>
+                <property name="sizeType">
+                 <enum>QSizePolicy::Policy::Fixed</enum>
+                </property>
+                <property name="sizeHint" stdset="0">
+                 <size>
+                  <width>10</width>
+                  <height>20</height>
+                 </size>
+                </property>
+               </spacer>
+              </item>
+              <item row="1" column="8">
+               <spacer name="horizontalSpacer_20">
+                <property name="orientation">
+                 <enum>Qt::Orientation::Horizontal</enum>
+                </property>
+                <property name="sizeType">
+                 <enum>QSizePolicy::Policy::Fixed</enum>
+                </property>
+                <property name="sizeHint" stdset="0">
+                 <size>
+                  <width>10</width>
+                  <height>20</height>
+                 </size>
+                </property>
+               </spacer>
+              </item>
+              <item row="1" column="4">
+               <spacer name="horizontalSpacer_17">
+                <property name="orientation">
+                 <enum>Qt::Orientation::Horizontal</enum>
+                </property>
+                <property name="sizeType">
+                 <enum>QSizePolicy::Policy::Fixed</enum>
+                </property>
+                <property name="sizeHint" stdset="0">
+                 <size>
+                  <width>10</width>
+                  <height>20</height>
+                 </size>
+                </property>
+               </spacer>
+              </item>
+             </layout>
+            </widget>
+           </item>
+           <item row="2" column="0" colspan="5">
+            <layout class="QHBoxLayout" name="horizontalLayout_3">
+             <item>
+              <widget class="QTextEdit" name="Console">
+               <property name="palette">
+                <palette>
+                 <active>
+                  <colorrole role="WindowText">
+                   <brush brushstyle="SolidPattern">
+                    <color alpha="255">
+                     <red>239</red>
+                     <green>240</green>
+                     <blue>241</blue>
+                    </color>
+                   </brush>
+                  </colorrole>
+                  <colorrole role="Button">
+                   <brush brushstyle="LinearGradientPattern">
+                    <gradient startx="0.000000000000000" starty="0.000000000000000" endx="1.000000000000000" endy="0.000000000000000" type="LinearGradient" spread="PadSpread" coordinatemode="ObjectBoundingMode">
+                     <gradientstop position="0.000000000000000">
+                      <color alpha="255">
+                       <red>35</red>
+                       <green>38</green>
+                       <blue>41</blue>
+                      </color>
+                     </gradientstop>
+                     <gradientstop position="1.000000000000000">
+                      <color alpha="255">
+                       <red>46</red>
+                       <green>50</green>
+                       <blue>55</blue>
+                      </color>
+                     </gradientstop>
+                    </gradient>
+                   </brush>
+                  </colorrole>
+                  <colorrole role="Text">
+                   <brush brushstyle="SolidPattern">
+                    <color alpha="255">
+                     <red>239</red>
+                     <green>240</green>
+                     <blue>241</blue>
+                    </color>
+                   </brush>
+                  </colorrole>
+                  <colorrole role="ButtonText">
+                   <brush brushstyle="SolidPattern">
+                    <color alpha="255">
+                     <red>239</red>
+                     <green>240</green>
+                     <blue>241</blue>
+                    </color>
+                   </brush>
+                  </colorrole>
+                  <colorrole role="Base">
+                   <brush brushstyle="LinearGradientPattern">
+                    <gradient startx="0.000000000000000" starty="0.000000000000000" endx="1.000000000000000" endy="0.000000000000000" type="LinearGradient" spread="PadSpread" coordinatemode="ObjectBoundingMode">
+                     <gradientstop position="0.000000000000000">
+                      <color alpha="255">
+                       <red>35</red>
+                       <green>38</green>
+                       <blue>41</blue>
+                      </color>
+                     </gradientstop>
+                     <gradientstop position="1.000000000000000">
+                      <color alpha="255">
+                       <red>46</red>
+                       <green>50</green>
+                       <blue>55</blue>
+                      </color>
+                     </gradientstop>
+                    </gradient>
+                   </brush>
+                  </colorrole>
+                  <colorrole role="Window">
+                   <brush brushstyle="LinearGradientPattern">
+                    <gradient startx="0.000000000000000" starty="0.000000000000000" endx="1.000000000000000" endy="0.000000000000000" type="LinearGradient" spread="PadSpread" coordinatemode="ObjectBoundingMode">
+                     <gradientstop position="0.000000000000000">
+                      <color alpha="255">
+                       <red>35</red>
+                       <green>38</green>
+                       <blue>41</blue>
+                      </color>
+                     </gradientstop>
+                     <gradientstop position="1.000000000000000">
+                      <color alpha="255">
+                       <red>46</red>
+                       <green>50</green>
+                       <blue>55</blue>
+                      </color>
+                     </gradientstop>
+                    </gradient>
+                   </brush>
+                  </colorrole>
+                  <colorrole role="Highlight">
+                   <brush brushstyle="SolidPattern">
+                    <color alpha="255">
+                     <red>61</red>
+                     <green>174</green>
+                     <blue>233</blue>
+                    </color>
+                   </brush>
+                  </colorrole>
+                  <colorrole role="HighlightedText">
+                   <brush brushstyle="SolidPattern">
+                    <color alpha="255">
+                     <red>239</red>
+                     <green>240</green>
+                     <blue>241</blue>
+                    </color>
+                   </brush>
+                  </colorrole>
+                  <colorrole role="PlaceholderText">
+                   <brush brushstyle="SolidPattern">
+                    <color alpha="128">
+                     <red>239</red>
+                     <green>240</green>
+                     <blue>241</blue>
+                    </color>
+                   </brush>
+                  </colorrole>
+                 </active>
+                 <inactive>
+                  <colorrole role="WindowText">
+                   <brush brushstyle="SolidPattern">
+                    <color alpha="255">
+                     <red>239</red>
+                     <green>240</green>
+                     <blue>241</blue>
+                    </color>
+                   </brush>
+                  </colorrole>
+                  <colorrole role="Button">
+                   <brush brushstyle="LinearGradientPattern">
+                    <gradient startx="0.000000000000000" starty="0.000000000000000" endx="1.000000000000000" endy="0.000000000000000" type="LinearGradient" spread="PadSpread" coordinatemode="ObjectBoundingMode">
+                     <gradientstop position="0.000000000000000">
+                      <color alpha="255">
+                       <red>35</red>
+                       <green>38</green>
+                       <blue>41</blue>
+                      </color>
+                     </gradientstop>
+                     <gradientstop position="1.000000000000000">
+                      <color alpha="255">
+                       <red>46</red>
+                       <green>50</green>
+                       <blue>55</blue>
+                      </color>
+                     </gradientstop>
+                    </gradient>
+                   </brush>
+                  </colorrole>
+                  <colorrole role="Text">
+                   <brush brushstyle="SolidPattern">
+                    <color alpha="255">
+                     <red>239</red>
+                     <green>240</green>
+                     <blue>241</blue>
+                    </color>
+                   </brush>
+                  </colorrole>
+                  <colorrole role="ButtonText">
+                   <brush brushstyle="SolidPattern">
+                    <color alpha="255">
+                     <red>239</red>
+                     <green>240</green>
+                     <blue>241</blue>
+                    </color>
+                   </brush>
+                  </colorrole>
+                  <colorrole role="Base">
+                   <brush brushstyle="LinearGradientPattern">
+                    <gradient startx="0.000000000000000" starty="0.000000000000000" endx="1.000000000000000" endy="0.000000000000000" type="LinearGradient" spread="PadSpread" coordinatemode="ObjectBoundingMode">
+                     <gradientstop position="0.000000000000000">
+                      <color alpha="255">
+                       <red>35</red>
+                       <green>38</green>
+                       <blue>41</blue>
+                      </color>
+                     </gradientstop>
+                     <gradientstop position="1.000000000000000">
+                      <color alpha="255">
+                       <red>46</red>
+                       <green>50</green>
+                       <blue>55</blue>
+                      </color>
+                     </gradientstop>
+                    </gradient>
+                   </brush>
+                  </colorrole>
+                  <colorrole role="Window">
+                   <brush brushstyle="LinearGradientPattern">
+                    <gradient startx="0.000000000000000" starty="0.000000000000000" endx="1.000000000000000" endy="0.000000000000000" type="LinearGradient" spread="PadSpread" coordinatemode="ObjectBoundingMode">
+                     <gradientstop position="0.000000000000000">
+                      <color alpha="255">
+                       <red>35</red>
+                       <green>38</green>
+                       <blue>41</blue>
+                      </color>
+                     </gradientstop>
+                     <gradientstop position="1.000000000000000">
+                      <color alpha="255">
+                       <red>46</red>
+                       <green>50</green>
+                       <blue>55</blue>
+                      </color>
+                     </gradientstop>
+                    </gradient>
+                   </brush>
+                  </colorrole>
+                  <colorrole role="Highlight">
+                   <brush brushstyle="SolidPattern">
+                    <color alpha="255">
+                     <red>61</red>
+                     <green>174</green>
+                     <blue>233</blue>
+                    </color>
+                   </brush>
+                  </colorrole>
+                  <colorrole role="HighlightedText">
+                   <brush brushstyle="SolidPattern">
+                    <color alpha="255">
+                     <red>239</red>
+                     <green>240</green>
+                     <blue>241</blue>
+                    </color>
+                   </brush>
+                  </colorrole>
+                  <colorrole role="PlaceholderText">
+                   <brush brushstyle="SolidPattern">
+                    <color alpha="128">
+                     <red>239</red>
+                     <green>240</green>
+                     <blue>241</blue>
+                    </color>
+                   </brush>
+                  </colorrole>
+                 </inactive>
+                 <disabled>
+                  <colorrole role="WindowText">
+                   <brush brushstyle="SolidPattern">
+                    <color alpha="255">
+                     <red>180</red>
+                     <green>180</green>
+                     <blue>180</blue>
+                    </color>
+                   </brush>
+                  </colorrole>
+                  <colorrole role="Button">
+                   <brush brushstyle="LinearGradientPattern">
+                    <gradient startx="0.000000000000000" starty="0.000000000000000" endx="1.000000000000000" endy="0.000000000000000" type="LinearGradient" spread="PadSpread" coordinatemode="ObjectBoundingMode">
+                     <gradientstop position="0.000000000000000">
+                      <color alpha="255">
+                       <red>49</red>
+                       <green>54</green>
+                       <blue>59</blue>
+                      </color>
+                     </gradientstop>
+                     <gradientstop position="1.000000000000000">
+                      <color alpha="255">
+                       <red>75</red>
+                       <green>83</green>
+                       <blue>91</blue>
+                      </color>
+                     </gradientstop>
+                    </gradient>
+                   </brush>
+                  </colorrole>
+                  <colorrole role="Text">
+                   <brush brushstyle="SolidPattern">
+                    <color alpha="255">
+                     <red>180</red>
+                     <green>180</green>
+                     <blue>180</blue>
+                    </color>
+                   </brush>
+                  </colorrole>
+                  <colorrole role="ButtonText">
+                   <brush brushstyle="SolidPattern">
+                    <color alpha="255">
+                     <red>180</red>
+                     <green>180</green>
+                     <blue>180</blue>
+                    </color>
+                   </brush>
+                  </colorrole>
+                  <colorrole role="Base">
+                   <brush brushstyle="LinearGradientPattern">
+                    <gradient startx="0.000000000000000" starty="0.000000000000000" endx="1.000000000000000" endy="0.000000000000000" type="LinearGradient" spread="PadSpread" coordinatemode="ObjectBoundingMode">
+                     <gradientstop position="0.000000000000000">
+                      <color alpha="255">
+                       <red>49</red>
+                       <green>54</green>
+                       <blue>59</blue>
+                      </color>
+                     </gradientstop>
+                     <gradientstop position="1.000000000000000">
+                      <color alpha="255">
+                       <red>75</red>
+                       <green>83</green>
+                       <blue>91</blue>
+                      </color>
+                     </gradientstop>
+                    </gradient>
+                   </brush>
+                  </colorrole>
+                  <colorrole role="Window">
+                   <brush brushstyle="LinearGradientPattern">
+                    <gradient startx="0.000000000000000" starty="0.000000000000000" endx="1.000000000000000" endy="0.000000000000000" type="LinearGradient" spread="PadSpread" coordinatemode="ObjectBoundingMode">
+                     <gradientstop position="0.000000000000000">
+                      <color alpha="255">
+                       <red>49</red>
+                       <green>54</green>
+                       <blue>59</blue>
+                      </color>
+                     </gradientstop>
+                     <gradientstop position="1.000000000000000">
+                      <color alpha="255">
+                       <red>75</red>
+                       <green>83</green>
+                       <blue>91</blue>
+                      </color>
+                     </gradientstop>
+                    </gradient>
+                   </brush>
+                  </colorrole>
+                  <colorrole role="Highlight">
+                   <brush brushstyle="SolidPattern">
+                    <color alpha="255">
+                     <red>61</red>
+                     <green>174</green>
+                     <blue>233</blue>
+                    </color>
+                   </brush>
+                  </colorrole>
+                  <colorrole role="HighlightedText">
+                   <brush brushstyle="SolidPattern">
+                    <color alpha="255">
+                     <red>239</red>
+                     <green>240</green>
+                     <blue>241</blue>
+                    </color>
+                   </brush>
+                  </colorrole>
+                  <colorrole role="PlaceholderText">
+                   <brush brushstyle="SolidPattern">
+                    <color alpha="128">
+                     <red>180</red>
+                     <green>180</green>
+                     <blue>180</blue>
+                    </color>
+                   </brush>
+                  </colorrole>
+                 </disabled>
+                </palette>
+               </property>
+               <property name="readOnly">
+                <bool>true</bool>
+               </property>
+               <property name="acceptRichText">
+                <bool>false</bool>
+               </property>
+              </widget>
+             </item>
+             <item>
+              <layout class="QVBoxLayout" name="verticalLayout_2">
+               <item>
+                <widget class="QPushButton" name="ClearConsole">
+                 <property name="text">
+                  <string>clear</string>
+                 </property>
+                </widget>
+               </item>
+               <item>
+                <spacer name="verticalSpacer_3">
+                 <property name="orientation">
+                  <enum>Qt::Orientation::Vertical</enum>
+                 </property>
+                 <property name="sizeHint" stdset="0">
+                  <size>
+                   <width>20</width>
+                   <height>40</height>
+                  </size>
+                 </property>
+                </spacer>
+               </item>
+              </layout>
+             </item>
+            </layout>
+           </item>
+           <item row="1" column="4">
+            <widget class="QGroupBox" name="groupBox_3">
+             <property name="title">
+              <string>spi</string>
+             </property>
+             <layout class="QGridLayout" name="gridLayout_2">
+              <item row="0" column="0">
+               <widget class="QLabel" name="label_7">
+                <property name="text">
+                 <string>bytes to write</string>
+                </property>
+               </widget>
+              </item>
+              <item row="0" column="1">
+               <layout class="QHBoxLayout" name="horizontalLayout_2">
+                <item>
+                 <spacer name="horizontalSpacer">
+                  <property name="orientation">
+                   <enum>Qt::Orientation::Horizontal</enum>
+                  </property>
+                  <property name="sizeHint" stdset="0">
+                   <size>
+                    <width>40</width>
+                    <height>20</height>
+                   </size>
+                  </property>
+                 </spacer>
+                </item>
+                <item>
+                 <widget class="QPushButton" name="SpiExecute">
+                  <property name="text">
+                   <string>execute</string>
+                  </property>
+                 </widget>
+                </item>
+               </layout>
+              </item>
+              <item row="2" column="1">
+               <spacer name="verticalSpacer_2">
+                <property name="orientation">
+                 <enum>Qt::Orientation::Vertical</enum>
+                </property>
+                <property name="sizeHint" stdset="0">
+                 <size>
+                  <width>20</width>
+                  <height>40</height>
+                 </size>
+                </property>
+               </spacer>
+              </item>
+              <item row="1" column="0" colspan="2">
+               <widget class="QTextEdit" name="SpiBytesToSend"/>
+              </item>
+             </layout>
+            </widget>
+           </item>
+           <item row="1" column="0" colspan="4">
+            <widget class="QGroupBox" name="groupBox">
+             <property name="title">
+              <string>i2c</string>
+             </property>
+             <layout class="QGridLayout" name="gridLayout">
+              <item row="0" column="0">
+               <widget class="QLabel" name="label_4">
+                <property name="text">
+                 <string>address (hex)</string>
+                </property>
+               </widget>
+              </item>
+              <item row="0" column="1">
+               <widget class="QLineEdit" name="I2cAddress">
+                <property name="sizePolicy">
+                 <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
+                  <horstretch>0</horstretch>
+                  <verstretch>0</verstretch>
+                 </sizepolicy>
+                </property>
+                <property name="maximumSize">
+                 <size>
+                  <width>60</width>
+                  <height>16777215</height>
+                 </size>
+                </property>
+                <property name="text">
+                 <string>000</string>
+                </property>
+                <property name="maxLength">
+                 <number>3</number>
+                </property>
+               </widget>
+              </item>
+              <item row="0" column="2">
+               <widget class="QLabel" name="label_5">
+                <property name="text">
+                 <string>flags (hex)</string>
+                </property>
+               </widget>
+              </item>
+              <item row="0" column="3">
+               <widget class="QLineEdit" name="I2cFlags">
+                <property name="sizePolicy">
+                 <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
+                  <horstretch>0</horstretch>
+                  <verstretch>0</verstretch>
+                 </sizepolicy>
+                </property>
+                <property name="maximumSize">
+                 <size>
+                  <width>60</width>
+                  <height>16777215</height>
+                 </size>
+                </property>
+                <property name="text">
+                 <string>0</string>
+                </property>
+                <property name="maxLength">
+                 <number>2</number>
+                </property>
+               </widget>
+              </item>
+              <item row="0" column="4">
+               <widget class="QLabel" name="label">
+                <property name="text">
+                 <string>number of bytes to read</string>
+                </property>
+               </widget>
+              </item>
+              <item row="0" column="5">
+               <widget class="QSpinBox" name="I2cNumberOfBytesToRead">
+                <property name="minimumSize">
+                 <size>
+                  <width>80</width>
+                  <height>0</height>
+                 </size>
+                </property>
+               </widget>
+              </item>
+              <item row="0" column="6">
+               <spacer name="horizontalSpacer_2">
+                <property name="orientation">
+                 <enum>Qt::Orientation::Horizontal</enum>
+                </property>
+                <property name="sizeHint" stdset="0">
+                 <size>
+                  <width>40</width>
+                  <height>20</height>
+                 </size>
+                </property>
+               </spacer>
+              </item>
+              <item row="0" column="7">
+               <widget class="QPushButton" name="I2cExecute">
+                <property name="text">
+                 <string>execute</string>
+                </property>
+               </widget>
+              </item>
+              <item row="1" column="0">
+               <layout class="QVBoxLayout" name="verticalLayout_3">
+                <item>
+                 <widget class="QLabel" name="label_2">
+                  <property name="text">
+                   <string>bytes to write</string>
+                  </property>
+                 </widget>
+                </item>
+                <item>
+                 <spacer name="verticalSpacer">
+                  <property name="orientation">
+                   <enum>Qt::Orientation::Vertical</enum>
+                  </property>
+                  <property name="sizeHint" stdset="0">
+                   <size>
+                    <width>20</width>
+                    <height>40</height>
+                   </size>
+                  </property>
+                 </spacer>
+                </item>
+               </layout>
+              </item>
+              <item row="2" column="1">
+               <spacer name="verticalSpacer_4">
+                <property name="orientation">
+                 <enum>Qt::Orientation::Vertical</enum>
+                </property>
+                <property name="sizeHint" stdset="0">
+                 <size>
+                  <width>20</width>
+                  <height>40</height>
+                 </size>
+                </property>
+               </spacer>
+              </item>
+              <item row="1" column="1" colspan="7">
+               <widget class="QTextEdit" name="I2cBytesToSend"/>
+              </item>
+             </layout>
+            </widget>
+           </item>
+          </layout>
+         </widget>
+        </widget>
+       </item>
+      </layout>
+     </widget>
+    </widget>
+   </item>
+  </layout>
+ </widget>
+ <resources/>
+ <connections>
+  <connection>
+   <sender>ClearConsole</sender>
+   <signal>clicked()</signal>
+   <receiver>Console</receiver>
+   <slot>clear()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>703</x>
+     <y>557</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>344</x>
+     <y>622</y>
+    </hint>
+   </hints>
+  </connection>
+ </connections>
+</ui>
