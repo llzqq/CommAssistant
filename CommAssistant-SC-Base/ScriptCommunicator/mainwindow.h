@@ -395,6 +395,12 @@ public slots:
    ///Is emitted if the console wrap mode has changed.
    void consoleWrapLinesChangedSlot(bool wrap);
 
+   ///Applies the minimal console policy used by this project.
+   void applyMinimalConsolePolicy(void);
+
+   ///Clears transient message state while keeping persistent configuration.
+   void clearTransientMessageState(void);
+
 private slots:
 
    ///Is called if the style shall be changed.

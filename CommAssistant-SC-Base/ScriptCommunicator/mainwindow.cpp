@@ -723,6 +723,8 @@ MainWindow::MainWindow(QStringList scripts, bool withScriptWindow, bool scriptWi
         if(loadConfig)
         {
             loadSettings();
+            applyMinimalConsolePolicy();
+            clearTransientMessageState();
             if(m_isFirstProgramStart)
             {
                 saveSettings();
@@ -748,6 +750,8 @@ MainWindow::MainWindow(QStringList scripts, bool withScriptWindow, bool scriptWi
         settings.textLogFile = false;
 
         m_settingsDialog->setAllSettingsSlot(settings, true);
+        applyMinimalConsolePolicy();
+        clearTransientMessageState();
 
         m_scriptWindow->startCommandLineScripts();
 
@@ -965,10 +969,6 @@ void MainWindow::sendButtonPressedSlot(void)
           else if(m_userInterface->ClearAfterSendingCheckBox->isChecked())
           {
               m_userInterface->SendTextEdit->clear();
-          }
-          if(success)
-          {
-              m_handleData->addDataToSendHistory(&sendData);
           }
       }
       else
@@ -2390,6 +2390,7 @@ bool MainWindow::loadSettings()
 
 
                 m_settingsDialog->setAllSettingsSlot(currentSettings, true);
+                applyMinimalConsolePolicy();
                 m_settingsDialog->blockSignals(false);
 
                 m_userInterface->rtsCheckBox->blockSignals(true);
@@ -2449,6 +2450,7 @@ bool MainWindow::loadSettings()
         textLogActivatedSlot(currentSettings.textLogFile);
         htmLogActivatedSlot(currentSettings.htmlLogFile);
         m_userInterface->actionReopenAllLogs->setVisible(currentSettings.appendTimestampAtLogFileName);
+        clearTransientMessageState();
     }
 
     return result;
@@ -3523,6 +3525,7 @@ void MainWindow::serialPortPinsChangedSlot(void)
     settings.serialPort.setDTR = m_userInterface->dtrCheckBox->isChecked();
     settings.serialPort.setRTS = m_userInterface->rtsCheckBox->isChecked();
     m_settingsDialog->setAllSettingsSlot(settings, false);
+    applyMinimalConsolePolicy();
     saveSettings();
 }
 
@@ -3982,6 +3985,73 @@ void MainWindow::showNumberOfReceivedAndSentBytes(void)
 {
     m_userInterface->ReceiveLable->setText(QString("%1 bytes received (%2 b/s)").arg(m_handleData->m_receivedBytes).arg(m_dataRateReceive)
                                            + QString("  %1 bytes sent (%2 b/s)").arg(m_handleData->m_sentBytes).arg(m_dataRateSend));
+}
+
+void MainWindow::applyMinimalConsolePolicy(void)
+{
+    Settings settings = *m_settingsDialog->settings();
+    if(settings.showSendDataInConsole)
+    {
+        settings.showSendDataInConsole = false;
+        m_settingsDialog->setAllSettingsSlot(settings, false);
+    }
+
+    m_settingsDialog->getUserInterface()->ShowSendInConsoleCheckBox->setChecked(false);
+}
+
+void MainWindow::clearTransientMessageState(void)
+{
+    if(m_handleData->m_historySendIsInProgress)
+    {
+        m_handleData->cancelSendHistory();
+    }
+
+    m_userInterface->SendTextEdit->clear();
+
+    m_userInterface->ReceiveTextEditUtf8->document()->blockSignals(true);
+    m_userInterface->ReceiveTextEditHex->document()->blockSignals(true);
+    m_userInterface->ReceiveTextEditDecimal->document()->blockSignals(true);
+    m_userInterface->ReceiveTextEditMixed->document()->blockSignals(true);
+    m_userInterface->ReceiveTextEditBinary->document()->blockSignals(true);
+
+    m_userInterface->ReceiveTextEditUtf8->clear();
+    m_userInterface->ReceiveTextEditHex->clear();
+    m_userInterface->ReceiveTextEditDecimal->clear();
+    m_userInterface->ReceiveTextEditMixed->clear();
+    m_userInterface->ReceiveTextEditBinary->clear();
+
+    m_userInterface->ReceiveTextEditUtf8->document()->blockSignals(false);
+    m_userInterface->ReceiveTextEditHex->document()->blockSignals(false);
+    m_userInterface->ReceiveTextEditDecimal->document()->blockSignals(false);
+    m_userInterface->ReceiveTextEditMixed->document()->blockSignals(false);
+    m_userInterface->ReceiveTextEditBinary->document()->blockSignals(false);
+
+    m_handleData->clear();
+    m_handleData->m_sendHistory.clear();
+    m_handleData->m_receiveHistory.clear();
+
+    m_userInterface->historyTextEdit->clear();
+    QTextEdit* receiveHistoryTextEdit = findChild<QTextEdit*>("receiveHistoryTextEdit");
+    if(receiveHistoryTextEdit != 0)
+    {
+        receiveHistoryTextEdit->clear();
+    }
+
+    m_userInterface->startIndexSpinBox->blockSignals(true);
+    m_userInterface->endIndexSpinBox->blockSignals(true);
+    m_userInterface->startIndexSpinBox->setMaximum(0);
+    m_userInterface->endIndexSpinBox->setMaximum(0);
+    m_userInterface->startIndexSpinBox->setValue(0);
+    m_userInterface->endIndexSpinBox->setValue(0);
+    m_userInterface->startIndexSpinBox->blockSignals(false);
+    m_userInterface->endIndexSpinBox->blockSignals(false);
+
+    m_userInterface->clearHistoryPushButton->setEnabled(false);
+    m_userInterface->sendHistoryPushButton->setEnabled(false);
+    m_userInterface->createScriptPushButton->setEnabled(false);
+
+    m_canTab->clearTables();
+    showNumberOfReceivedAndSentBytes();
 }
 
 
@@ -5259,6 +5329,8 @@ bool MainWindow::createConfig(bool isCallFromButton)
 
             Settings currentSettings = *m_settingsDialog->settings();
             m_settingsDialog->setAllSettingsSlot(currentSettings, true);
+            applyMinimalConsolePolicy();
+            clearTransientMessageState();
 
 
             newConfigUsed = true;
@@ -5344,6 +5416,8 @@ void MainWindow::loadPreviousConfigSlot()
             m_configLockFileTimer.start(2000);
 
             loadSettings();
+            applyMinimalConsolePolicy();
+            clearTransientMessageState();
             inititializeTab();
         }
     }
@@ -5412,6 +5486,8 @@ void MainWindow::loadConfigSlot()
             m_configLockFileTimer.start(2000);
 
             loadSettings();
+            applyMinimalConsolePolicy();
+            clearTransientMessageState();
             inititializeTab();
         }
     }
