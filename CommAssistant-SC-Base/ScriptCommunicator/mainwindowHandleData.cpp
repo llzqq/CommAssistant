@@ -6,6 +6,30 @@
 #include "canTab.h"
 #include "mainInterfaceThread.h"
 #include <QMessageBox>
+#include <QTextEdit>
+
+namespace
+{
+QString historyEntryToHtml(const QByteArray& data, qint32 index)
+{
+    QString text = QString("index: %1<br>").arg(index);
+    QString payload = QString::fromUtf8(data);
+    if(payload.contains(QChar::ReplacementCharacter))
+    {
+        text += MainWindow::byteArrayToNumberString(data, false, true, false);
+    }
+    else
+    {
+        payload = payload.toHtmlEscaped();
+        payload.replace(" ", "&nbsp;");
+        payload.replace("\r", "");
+        payload.replace("\n", "<br>");
+        text += payload;
+    }
+    text += "<br>";
+    return text;
+}
+}
 
 /**
  * Constructor.
@@ -1112,6 +1136,7 @@ void MainWindowHandleData::dataReceivedSlot(QByteArray data)
 
     appendDataToStoredData(data, false, false, m_mainWindow->m_isConnectedWithCan,
                            false, m_mainWindow->m_isConnectedWithI2cMaster);
+    addDataToReceiveHistory(&data);
 }
 
 /**
@@ -1128,6 +1153,7 @@ void MainWindowHandleData::canMessagesReceivedSlot(QVector<QByteArray> messages)
         m_receivedBytes -= PCANBasicClass::BYTES_METADATA_RECEIVE;
 
         appendDataToStoredData(el, false, false, m_mainWindow->m_isConnectedWithCan, false, m_mainWindow->m_isConnectedWithI2cMaster);
+        addDataToReceiveHistory(&el);
         m_mainWindow->m_canTab->canMessageReceived(el);
     }
 }
@@ -2004,6 +2030,7 @@ void MainWindowHandleData::bridgeDataReceivedSlot(QByteArray data, bool isFromCa
 {
     m_receivedBytes += data.size();
     appendDataToStoredData(data, false, false, isFromCan, false, false);
+    addDataToReceiveHistory(&data);
 }
 
 void MainWindowHandleData::bridgeDataSentSlot(QByteArray data, bool success, bool isFromCan)
@@ -2039,6 +2066,40 @@ void MainWindowHandleData::addDataToSendHistory(const QByteArray* data)
     if(!m_historyConsoleTimer.isActive() && !m_historySendIsInProgress)
     {
         m_historyConsoleTimer.start(currentSettings->updateIntervalConsole);
+    }
+}
+
+void MainWindowHandleData::addDataToReceiveHistory(const QByteArray* data)
+{
+    m_receiveHistory.push_back(*data);
+
+    if(m_receiveHistory.size() > MAX_SEND_HISTORY_ENTRIES)
+    {
+        m_receiveHistory.remove(0);
+    }
+
+    QTextEdit* receiveHistoryTextEdit = m_mainWindow->findChild<QTextEdit*>("receiveHistoryTextEdit");
+    if(receiveHistoryTextEdit == 0)
+    {
+        return;
+    }
+
+    const int pos = receiveHistoryTextEdit->verticalScrollBar()->value();
+    receiveHistoryTextEdit->clear();
+    for(qint32 i = 0; m_receiveHistory.size() > i; i++)
+    {
+        receiveHistoryTextEdit->append(historyEntryToHtml(m_receiveHistory[i], i));
+    }
+    receiveHistoryTextEdit->verticalScrollBar()->setValue(pos);
+}
+
+void MainWindowHandleData::clearReceiveHistorySlot()
+{
+    m_receiveHistory.clear();
+    QTextEdit* receiveHistoryTextEdit = m_mainWindow->findChild<QTextEdit*>("receiveHistoryTextEdit");
+    if(receiveHistoryTextEdit != 0)
+    {
+        receiveHistoryTextEdit->clear();
     }
 }
 

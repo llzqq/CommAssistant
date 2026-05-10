@@ -34,6 +34,11 @@
 #include <QTime>
 #include <QResource>
 #include <QCommonStyle>
+#include <QHBoxLayout>
+#include <QLabel>
+#include <QPushButton>
+#include <QTextEdit>
+#include <QVBoxLayout>
 
 #ifdef Q_OS_WIN32
 #include <Windows.h>
@@ -363,6 +368,29 @@ MainWindow::MainWindow(QStringList scripts, bool withScriptWindow, bool scriptWi
 {
 
     m_userInterface->setupUi(this);
+
+    auto createSideTitle = [](const QString& text) {
+        QLabel* label = new QLabel(text);
+        label->setObjectName(text + "AreaTitleLabel");
+        label->setAlignment(Qt::AlignCenter);
+        label->setFixedWidth(72);
+        label->setStyleSheet("font-weight: bold;");
+        return label;
+    };
+
+    QWidget* receiveAreaWrapper = new QWidget();
+    QHBoxLayout* receiveAreaLayout = new QHBoxLayout(receiveAreaWrapper);
+    receiveAreaLayout->setContentsMargins(0, 0, 0, 0);
+    receiveAreaLayout->addWidget(createSideTitle("Receive"));
+    receiveAreaLayout->addWidget(m_userInterface->tabWidget, 1);
+    m_userInterface->SendAreaSplitter->insertWidget(0, receiveAreaWrapper);
+
+    QWidget* sendAreaWrapper = new QWidget();
+    QHBoxLayout* sendAreaLayout = new QHBoxLayout(sendAreaWrapper);
+    sendAreaLayout->setContentsMargins(0, 0, 0, 0);
+    sendAreaLayout->addWidget(createSideTitle("Send"));
+    sendAreaLayout->addWidget(m_userInterface->SendAreaInputsSplitter, 1);
+    m_userInterface->verticalLayout_10->insertWidget(1, sendAreaWrapper);
 
     m_userInterface->SendAreaSplitter->setStretchFactor(0, 7);
     m_userInterface->SendAreaSplitter->setStretchFactor(1, 1);
@@ -4116,6 +4144,49 @@ void MainWindow::initActionsConnections()
     m_userInterface->mainToolBar->addAction(m_commAssistantAction);
     m_userInterface->mainToolBar->addAction(m_userInterface->actionClear);
     m_userInterface->mainToolBar->addAction(m_userInterface->actionQuit);
+
+    auto removeToolBoxPage = [this](QWidget* page) {
+        const int index = m_userInterface->toolBox->indexOf(page);
+        if(index >= 0)
+        {
+            m_userInterface->toolBox->removeItem(index);
+        }
+        page->hide();
+    };
+    removeToolBoxPage(m_userInterface->SequencesPage);
+    removeToolBoxPage(m_userInterface->ScriptsPage);
+    removeToolBoxPage(m_userInterface->FindTextPage);
+
+    m_userInterface->historyFormatComboBox->setCurrentText("utf8");
+    m_userInterface->label_4->hide();
+    m_userInterface->label_5->hide();
+    m_userInterface->label_6->hide();
+    m_userInterface->label_7->hide();
+    m_userInterface->label_8->hide();
+    m_userInterface->startIndexSpinBox->hide();
+    m_userInterface->endIndexSpinBox->hide();
+    m_userInterface->sendPauseSpinBox->hide();
+    m_userInterface->sendRepetitionCountSpinBox->hide();
+    m_userInterface->historyFormatComboBox->hide();
+    m_userInterface->createScriptPushButton->hide();
+    m_userInterface->sendHistoryPushButton->hide();
+    m_userInterface->progressBar->hide();
+    m_userInterface->gridLayout_2->removeWidget(m_userInterface->clearHistoryPushButton);
+    m_userInterface->verticalLayout_18->insertWidget(0, m_userInterface->clearHistoryPushButton);
+
+    auto *receiveHistoryPage = new QWidget(m_userInterface->toolBox);
+    receiveHistoryPage->setObjectName("ReceiveHistoryPage");
+    auto *receiveHistoryLayout = new QVBoxLayout(receiveHistoryPage);
+    auto *clearReceiveHistoryButton = new QPushButton("clear", receiveHistoryPage);
+    clearReceiveHistoryButton->setObjectName("clearReceiveHistoryPushButton");
+    auto *receiveHistoryTextEdit = new QTextEdit(receiveHistoryPage);
+    receiveHistoryTextEdit->setObjectName("receiveHistoryTextEdit");
+    receiveHistoryTextEdit->setReadOnly(true);
+    receiveHistoryLayout->addWidget(clearReceiveHistoryButton);
+    receiveHistoryLayout->addWidget(receiveHistoryTextEdit, 1);
+    connect(clearReceiveHistoryButton, SIGNAL(clicked()), m_handleData, SLOT(clearReceiveHistorySlot()));
+    m_userInterface->toolBox->addItem(receiveHistoryPage, "Receive history");
+    m_userInterface->toolBox->setCurrentIndex(m_userInterface->toolBox->indexOf(m_userInterface->SendHistoryPage));
 }
 
 /**

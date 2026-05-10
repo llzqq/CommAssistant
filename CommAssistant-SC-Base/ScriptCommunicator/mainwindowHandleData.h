@@ -147,6 +147,9 @@ public:
     ///Adds data to the send history.
     void addDataToSendHistory(const QByteArray* data);
 
+    ///Adds data to the receive history.
+    void addDataToReceiveHistory(const QByteArray* data);
+
     ///Send the history.
     void sendHistory(void);
 
@@ -173,6 +176,9 @@ public slots:
 
     ///The history console timer slot.
     void historyConsoleTimerSlot();
+
+    ///Clears the receive history.
+    void clearReceiveHistorySlot();
 
     ///The send history timer slot.
     void sendHistoryTimerSlot();
@@ -313,6 +319,9 @@ private:
 
     ///The send history buffer.
     QVector<QByteArray> m_sendHistory;
+
+    ///The receive history buffer.
+    QVector<QByteArray> m_receiveHistory;
 
     ///The history data which must be sent.
     QVector<QByteArray> m_sendHistorySendData;
