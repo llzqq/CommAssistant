@@ -183,3 +183,27 @@ $env:PATH="D:/Tools/Qt/Tools/mingw1310_64/bin;D:/Tools/Qt/6.10.3/mingw_64/bin;" 
 & "D:/Tools/Qt/Tools/mingw1310_64/bin/mingw32-make.exe" -j8 release
 & "D:/Tools/Qt/6.10.3/mingw_64/bin/windeployqt.exe" --release "release/ScriptCommunicator.exe"
 ```
+
+## 9. 只交付一个 exe 的打包方式
+
+当前环境使用的是动态 Qt，不是静态 Qt，因此不能仅靠改工程文件就得到真正“静态链接”的单文件 exe。
+
+如果目标是“最终交付时只给用户一个 exe”，可以使用仓库里的打包脚本：
+
+```powershell
+cd "E:/projects/projects/8y/CommAssistant-SC-Base"
+.\scripts\package_single_exe.ps1
+```
+
+这个脚本会：
+
+- 先生成/更新 `release` 版程序
+- 使用 `windeployqt` 收集 Qt 运行库
+- 把部署目录打成 zip 并嵌入到一个启动器 exe 中
+- 用户最终只需要拿到一个 exe 文件
+
+注意：
+
+- 这不是静态 Qt 链接。
+- 这是“单文件自解压启动包”。
+- 如果你必须要“真正不带任何外部依赖的原生单 exe”，需要另行准备静态 Qt 并重新编译整个工程。

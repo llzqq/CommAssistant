@@ -1,46 +1,42 @@
-# ScriptCommunicator
-ScriptCommunicator is a scriptable cross-platform data terminal that supports serial port (RS232, USB to serial), UDP, TCP client/server, SPI, I2C, and CAN.
-All sent and received data can be shown in a console and can be logged in an html and a text log.
+# Comm Assistant
 
-In addition to the simple sending and receiving of data, ScriptCommunicator has a JavaScript interface.
-This script interface has the following features:
-* Scripts can send and receive data with the main interface.
-* In addition to the main interface scripts can create and use their own interfaces (serial port (RS232, USB to serial), UDP, TCP client, TCP server, PCAN, and SPI/I2C).
-* Scripts can use their own GUI (GUI files which have been created with QtDesigner (is included) or QtCreator). 
-* Multiple plot windows can be created by scripts (QCustomPlot  developed by Emanuel Eichhammer is used)
+`Comm Assistant` 是基于 `ScriptCommunicator` 的轻量通讯工具，面向 `RS422`、`CAN`、`Ethernet` 三类最小通讯场景。
 
-**Features**
+## 项目特点
 
-* seriel port (RS232, USB to serial)
-* TCP client/server (network proxy support for TCP clients)
-* UDP
-* SPI (Aardvark I2C/SPI)
-* I2C (Aardvark I2C/SPI)
-* CAN (PCAN-USB, only on windows)
-* utf8, hexadecimal, decimal, binary and mixed console
-* html and text log
-* script interface (JavaScript)->run automated test jobs, automatic device configuration scripts...
-* use ui files (user interface created with QtDesigner (is included) or QtCreator) from script->building test GUIs, control GUIs...
-* plotting data via script and export the generated graphs to file (png, jpg, bmp, pdf and csv)->e.g. to visualize a PID controller or a heater
-* multi user and multi workspace support
+- 统一的 `Comm Assistant` 连接入口
+- 主界面保留最小可用收发区
+- 支持发送历史与接收历史
+- 保留 `TCP / UDP / CAN / 串口` 相关底层链路
+- 提供 `HELLO / ACK` 最小闭环测试
 
-**main window**
+## 当前界面
 
-![main window](https://a.fsdn.com/con/app/proj/scriptcommunicator/screenshots/2023-07-04_09h27_03-08f21d94.png/max/max/1)
+- 顶部工具栏：`Comm Assistant`、`Clear`、`Quit`
+- 右侧栏：`Send history`、`Receive history`
+- 主界面：发送区、接收区、状态栏
 
-**dark mode**
+## 使用方式
 
-![dark mode](https://a.fsdn.com/con/app/proj/scriptcommunicator/screenshots/2023-07-04_09h27_39-19d7e224.png/max/max/1)
+1. 打开 `Comm Assistant`
+2. 选择通讯方式并配置参数
+3. 点击 `Apply` 建立连接
+4. 点击 `Start Test` 验证链路
+5. 使用主界面发送区进行实际收发
 
-**example script GUI**
+## 构建
 
-![example script GUI](https://a.fsdn.com/con/app/proj/scriptcommunicator/screenshots/2015-12-02_10h19_22.png)
+环境和命令见 [docs/build_from_source.md](docs/build_from_source.md)。
 
-# Homepage
-[https://sourceforge.net/projects/scriptcommunicator/](https://sourceforge.net/projects/scriptcommunicator/)
+## 单文件交付
 
-# Downloads (release 06.11)
-- [Windows](http://sourceforge.net/projects/scriptcommunicator/files/Windows/ScriptCommunicatorSetup_06_11_windows.exe/download)
-- [Linux 64 bit](http://sourceforge.net/projects/scriptcommunicator/files/Linux_64Bit/ScriptCommunicator_06_11_linux_64_bit.7z/download)
-- [MacOS](http://sourceforge.net/projects/scriptcommunicator/files/MacOS/ScriptCommunicator_06_10_macos.zip/download)
-- [Source](http://sourceforge.net/projects/scriptcommunicator/files/Source/ScriptCommunicator_06_11_source.7z/download)
+当前工程支持生成一个可直接交付的单文件启动包，脚本见 `scripts/package_single_exe.ps1`。
+
+## 文档
+
+- [架构说明](docs/architecture.md)
+- [测试流程](docs/comm_assistant_test_flow.md)
+- [Ethernet 测试](docs/Ethernet_test.md)
+- [RS422 测试](docs/RS422_test.md)
+- [CAN 测试](docs/CAN_test.md)
+- [构建说明](docs/build_from_source.md)
