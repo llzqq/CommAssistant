@@ -359,7 +359,7 @@ MainWindow::MainWindow(QStringList scripts, bool withScriptWindow, bool scriptWi
     m_dataRateSend(0), m_dataRateReceive(0), m_handleData(0), m_toolBoxSplitterSizeSecond(0),
     m_sendAreaSplitterSizeSecond(0), m_toolBoxSplitterSizesSecond(), m_currentToolBoxIndex(0), m_mainConfigLockFile(),
     m_configLockFileTimer(), m_extraPluginPaths(extraPluginPaths), m_scriptArguments(scriptArguments), m_scriptTabs(), m_scriptTabsTitles(),
-    m_scriptToolBoxPage(), m_closedByScript(false), m_exitCode(0), m_commAssistantDialog(0)
+    m_scriptToolBoxPage(), m_closedByScript(false), m_exitCode(0), m_commAssistantDialog(0), m_commAssistantAction(0)
 {
 
     m_userInterface->setupUi(this);
@@ -4083,9 +4083,6 @@ void MainWindow::initActionsConnections()
     connect(m_userInterface->actionAbout, SIGNAL(triggered()), this, SLOT(showAboutWindowSlot()));
     connect(m_userInterface->actionManual, SIGNAL(triggered()), this, SLOT(openTheManualSlot()));
     connect(m_userInterface->actionAddMessage, SIGNAL(triggered()), this, SLOT(openAddMessageDialogSlot()));
-    QAction* openCommAssistant = new QAction("Comm Assistant", this);
-    m_userInterface->menuConfig->addAction(openCommAssistant);
-    connect(openCommAssistant, SIGNAL(triggered()), this, SLOT(showCommAssistantSlot()));
     connect(m_userInterface->actionBringAllToForeground, SIGNAL(triggered()), this, SLOT(bringWindowsToFrontSlot()));
 
 
@@ -4105,6 +4102,20 @@ void MainWindow::initActionsConnections()
     connect(m_userInterface->actionGetSupport, SIGNAL(triggered()),this, SLOT(getSupportSlot()));
 
     connect(m_userInterface->actionReopenAllLogs, SIGNAL(triggered()),this, SLOT(reopenLogsSlot()));
+
+    if(m_commAssistantAction == 0)
+    {
+        m_commAssistantAction = new QAction(QIcon(":/images/settings.png"), "Comm Assistant", this);
+        m_commAssistantAction->setToolTip("open Comm Assistant");
+        connect(m_commAssistantAction, SIGNAL(triggered()), this, SLOT(showCommAssistantSlot()));
+    }
+
+    m_userInterface->menuBar->hide();
+    m_userInterface->mainToolBar->clear();
+    m_userInterface->mainToolBar->setToolButtonStyle(Qt::ToolButtonTextBesideIcon);
+    m_userInterface->mainToolBar->addAction(m_commAssistantAction);
+    m_userInterface->mainToolBar->addAction(m_userInterface->actionClear);
+    m_userInterface->mainToolBar->addAction(m_userInterface->actionQuit);
 }
 
 /**

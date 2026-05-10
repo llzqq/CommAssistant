@@ -71,6 +71,7 @@ class CanTab;
 class MainWindow;
 class SearchConsole;
 class CommAssistantDialog;
+class QAction;
 
 class DragDropLineEdit : public QLineEdit
 {
@@ -628,6 +629,9 @@ private:
 
     ///The communication assistant dialog.
     CommAssistantDialog* m_commAssistantDialog;
+
+    ///The main toolbar entry for opening the communication assistant.
+    QAction* m_commAssistantAction;
 
     ///The label in the status bar.
     QLabel m_statusBarLabel;
