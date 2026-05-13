@@ -40,7 +40,25 @@ function resolve_binary_path() {
         fi
     done
 
+    local discovered
+    discovered="$(find "${build_dir}" -maxdepth 3 -type f -name "${binary_name}" | head -n 1 || true)"
+    if [[ -n "${discovered}" ]]; then
+        printf '%s\n' "${discovered}"
+        return 0
+    fi
+
     return 1
+}
+
+function print_build_dir_snapshot() {
+    local build_dir="$1"
+
+    echo "build directory snapshot: ${build_dir}" >&2
+    if [[ -d "${build_dir}" ]]; then
+        find "${build_dir}" -maxdepth 3 \( -type f -o -type l \) | sort >&2 || true
+    else
+        echo "directory does not exist" >&2
+    fi
 }
 
 function require_command() {
@@ -118,11 +136,13 @@ DELETE_BIN="$(resolve_binary_path "${DELETE_BUILD_DIR}" "${DELETE_RELEASE_DIR}" 
 
 if [[ ! -f "${SCRIPT_BIN}" ]]; then
     echo "release executable not found in: ${SCRIPT_RELEASE_DIR} or ${BUILD_DIR}" >&2
+    print_build_dir_snapshot "${BUILD_DIR}"
     exit 1
 fi
 
 if [[ ! -f "${DELETE_BIN}" ]]; then
     echo "DeleteFolder executable not found in: ${DELETE_RELEASE_DIR} or ${DELETE_BUILD_DIR}" >&2
+    print_build_dir_snapshot "${DELETE_BUILD_DIR}"
     exit 1
 fi
 
