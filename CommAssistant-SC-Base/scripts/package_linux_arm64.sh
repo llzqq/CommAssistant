@@ -38,7 +38,7 @@ function build_qmake_project() {
     mkdir -p "${output_dir}"
     pushd "${output_dir}" >/dev/null
     "${QMAKE_BIN}" "${project_file}" "CONFIG+=release"
-    "${MAKE_BIN}" -j"${JOBS}" release
+    "${MAKE_BIN}" -j"${JOBS}"
     popd >/dev/null
 }
 
