@@ -1,0 +1,116 @@
+name: Linux ARM64 Release
+
+on:
+  push:
+    branches:
+      - "**"
+    tags:
+      - "v*"
+    paths:
+      - "CommAssistant-SC-Base/**"
+      - ".github/workflows/linux-arm64-release.yml"
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+jobs:
+  build-linux-arm64:
+    runs-on: ubuntu-24.04-arm
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - name: Install build dependencies
+        run: |
+          sudo apt-get update
+          sudo apt-get install -y \
+            build-essential \
+            gh \
+            patchelf \
+            tar \
+            qmake6 \
+            qt6-base-dev \
+            qt6-base-dev-tools \
+            qt6-declarative-dev \
+            qt6-tools-dev \
+            qt6-tools-dev-tools \
+            libqt6opengl6-dev \
+            xvfb
+
+          for pkg in qt6-serialbus-dev libqt6serialbus6-dev; do
+            if apt-cache show "$pkg" >/dev/null 2>&1; then
+              sudo apt-get install -y "$pkg"
+              break
+            fi
+          done
+
+          for pkg in qt6-serialport-dev libqt6serialport6-dev; do
+            if apt-cache show "$pkg" >/dev/null 2>&1; then
+              sudo apt-get install -y "$pkg"
+              break
+            fi
+          done
+
+          for pkg in qt6-serialbus-plugins libqt6serialbus6-plugins; do
+            if apt-cache show "$pkg" >/dev/null 2>&1; then
+              sudo apt-get install -y "$pkg"
+              break
+            fi
+          done
+
+      - name: Build package
+        run: |
+          bash "CommAssistant-SC-Base/scripts/package_linux_arm64.sh"
+
+      - name: Smoke test
+        run: |
+          set -euo pipefail
+          package_root="CommAssistant-SC-Base/build-linux-arm64/package"
+          archive="${package_root}/CommAssistant-linux-arm64.tar.gz"
+          workdir="$(mktemp -d)"
+          tar -xzf "$archive" -C "$workdir"
+          appdir="${workdir}/CommAssistant-linux-arm64"
+          log="${workdir}/smoke.log"
+
+          set +e
+          QT_QPA_PLATFORM=offscreen timeout 10s "${appdir}/CommAssistant" >"$log" 2>&1
+          status=$?
+          set -e
+
+          if [[ "$status" -ne 0 && "$status" -ne 124 ]]; then
+            cat "$log"
+            exit "$status"
+          fi
+
+          if grep -Eiq "could not load the qt platform plugin|no qt platform plugin|shared library|cannot open shared object file|plugin.*not found" "$log"; then
+            cat "$log"
+            exit 1
+          fi
+
+      - name: Upload artifact
+        uses: actions/upload-artifact@v4
+        with:
+          name: CommAssistant-linux-arm64
+          path: CommAssistant-SC-Base/build-linux-arm64/package/CommAssistant-linux-arm64.tar.gz
+          if-no-files-found: error
+
+      - name: Publish GitHub Release
+        if: startsWith(github.ref, 'refs/tags/v')
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          set -euo pipefail
+          tag="${GITHUB_REF_NAME}"
+          archive="CommAssistant-SC-Base/build-linux-arm64/package/CommAssistant-linux-arm64.tar.gz"
+
+          if ! gh release view "$tag" >/dev/null 2>&1; then
+            gh release create "$tag" \
+              --title "$tag" \
+              --notes "Linux ARM64 release for CommAssistant"
+          fi
+
+          gh release upload "$tag" "$archive#CommAssistant-linux-arm64.tar.gz" --clobber

@@ -9,12 +9,11 @@ TEMPLATE = app
 
 SOURCES += main.cpp
 
-unix{
-QMAKE_RPATHDIR += lib
+unix:!macx{
+QMAKE_LFLAGS += -Wl,-rpath,'\$$ORIGIN/lib'
 }
 
 macx{
 QMAKE_APPLE_DEVICE_ARCHS = x86_64 arm64
 }
-
 

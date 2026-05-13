@@ -31,7 +31,10 @@ QT += qml
 DEFINES += QUAZIP_STATIC
 unix{
 LIBS += -ldl
-QMAKE_RPATHDIR += lib
+}
+
+unix:!macx{
+QMAKE_LFLAGS += -Wl,-rpath,'\$$ORIGIN/lib'
 }
 
 macx{
@@ -47,15 +50,25 @@ quazip \
 quazip/zLib \
 ScriptEditor
 
+win32{
 RC_FILE = images/ScriptCommunicator.rc
+}
 
 outFolder = release
 CONFIG(debug, debug|release){
 outFolder = debug
 }
 
+win32{
 copydata.commands = $(COPY_FILE) $$system_path($$PWD/qss/stylesheet.qss) $$system_path($$OUT_PWD)\\$$outFolder
 copydata.commands += && $(COPY_FILE) $$system_path($$PWD/qss/stylesheet.rcc) $$system_path($$OUT_PWD)\\$$outFolder
+}
+
+unix{
+copydata.commands = mkdir -p $$shell_path($$OUT_PWD/$$outFolder)
+copydata.commands += && $(COPY_FILE) $$shell_path($$PWD/qss/stylesheet.qss) $$shell_path($$OUT_PWD/$$outFolder)
+copydata.commands += && $(COPY_FILE) $$shell_path($$PWD/qss/stylesheet.rcc) $$shell_path($$OUT_PWD/$$outFolder)
+}
 first.depends = $(first) copydata
 export(first.depends)
 export(copydata.commands)

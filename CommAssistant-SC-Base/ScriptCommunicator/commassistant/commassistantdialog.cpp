@@ -69,6 +69,33 @@ QString modeName(int index)
     default: return "Unknown";
     }
 }
+
+QString defaultRsPort()
+{
+#ifdef Q_OS_LINUX
+    return "/dev/ttyUSB0";
+#else
+    return "COM3";
+#endif
+}
+
+QString defaultCanDriver()
+{
+#ifdef Q_OS_LINUX
+    return "SocketCAN";
+#else
+    return "SLCAN";
+#endif
+}
+
+QString defaultCanChannel()
+{
+#ifdef Q_OS_LINUX
+    return "can0";
+#else
+    return "COM4";
+#endif
+}
 }
 
 CommAssistantDialog::CommAssistantDialog(QWidget* parent)
@@ -184,7 +211,7 @@ void CommAssistantDialog::buildUi()
 
     auto *rsWidget = new QWidget(this);
     auto *rsForm = new QFormLayout(rsWidget);
-    m_rsPortEdit = new QLineEdit("COM3", rsWidget);
+    m_rsPortEdit = new QLineEdit(defaultRsPort(), rsWidget);
     m_rsBaudCombo = new QComboBox(rsWidget);
     m_rsBaudCombo->addItems(QStringList() << "9600" << "115200" << "921600");
     m_rsDataBitsCombo = new QComboBox(rsWidget);
@@ -203,7 +230,8 @@ void CommAssistantDialog::buildUi()
     auto *canForm = new QFormLayout(canWidget);
     m_canTypeCombo = new QComboBox(canWidget);
     m_canTypeCombo->addItems(QStringList() << "SLCAN" << "SocketCAN");
-    m_canChannelEdit = new QLineEdit("COM4", canWidget);
+    m_canTypeCombo->setCurrentText(defaultCanDriver());
+    m_canChannelEdit = new QLineEdit(defaultCanChannel(), canWidget);
     m_canBitrateCombo = new QComboBox(canWidget);
     m_canBitrateCombo->addItems(QStringList() << "125000" << "250000" << "500000" << "1000000");
     m_canIdTypeCombo = new QComboBox(canWidget);
