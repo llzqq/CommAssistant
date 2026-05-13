@@ -21,8 +21,27 @@ DELETE_PRO="${APP_ROOT}/DeleteFolder/DeleteFolder/DeleteFolder.pro"
 
 SCRIPT_RELEASE_DIR="${BUILD_DIR}/release"
 DELETE_RELEASE_DIR="${DELETE_BUILD_DIR}/release"
-SCRIPT_BIN="${SCRIPT_RELEASE_DIR}/ScriptCommunicator"
-DELETE_BIN="${DELETE_RELEASE_DIR}/DeleteFolder"
+
+function resolve_binary_path() {
+    local build_dir="$1"
+    local release_dir="$2"
+    local binary_name="$3"
+
+    local candidates=(
+        "${release_dir}/${binary_name}"
+        "${build_dir}/${binary_name}"
+    )
+
+    local candidate
+    for candidate in "${candidates[@]}"; do
+        if [[ -f "${candidate}" ]]; then
+            printf '%s\n' "${candidate}"
+            return 0
+        fi
+    done
+
+    return 1
+}
 
 function require_command() {
     if ! command -v "$1" >/dev/null 2>&1; then
@@ -94,13 +113,16 @@ if [[ "${SKIP_BUILD}" != "1" ]]; then
     build_qmake_project "${DELETE_PRO}" "${DELETE_BUILD_DIR}"
 fi
 
+SCRIPT_BIN="$(resolve_binary_path "${BUILD_DIR}" "${SCRIPT_RELEASE_DIR}" "ScriptCommunicator" || true)"
+DELETE_BIN="$(resolve_binary_path "${DELETE_BUILD_DIR}" "${DELETE_RELEASE_DIR}" "DeleteFolder" || true)"
+
 if [[ ! -f "${SCRIPT_BIN}" ]]; then
-    echo "release executable not found: ${SCRIPT_BIN}" >&2
+    echo "release executable not found in: ${SCRIPT_RELEASE_DIR} or ${BUILD_DIR}" >&2
     exit 1
 fi
 
 if [[ ! -f "${DELETE_BIN}" ]]; then
-    echo "DeleteFolder executable not found: ${DELETE_BIN}" >&2
+    echo "DeleteFolder executable not found in: ${DELETE_RELEASE_DIR} or ${DELETE_BUILD_DIR}" >&2
     exit 1
 fi
 
