@@ -26,6 +26,27 @@ jobs:
 
       - name: Install build dependencies
         run: |
+          set -euo pipefail
+
+          package_has_candidate() {
+            local pkg="$1"
+            local candidate
+            candidate="$(apt-cache policy "$pkg" 2>/dev/null | awk '/Candidate:/ {print $2; exit}')"
+            [[ -n "$candidate" && "$candidate" != "(none)" ]]
+          }
+
+          install_first_available() {
+            local pkg
+            for pkg in "$@"; do
+              if package_has_candidate "$pkg"; then
+                sudo apt-get install -y "$pkg"
+                return 0
+              fi
+            done
+            echo "no installable package found in: $*" >&2
+            return 1
+          }
+
           sudo apt-get update
           sudo apt-get install -y \
             build-essential \
@@ -41,26 +62,11 @@ jobs:
             libqt6opengl6-dev \
             xvfb
 
-          for pkg in qt6-serialbus-dev libqt6serialbus6-dev; do
-            if apt-cache show "$pkg" >/dev/null 2>&1; then
-              sudo apt-get install -y "$pkg"
-              break
-            fi
-          done
+          install_first_available qt6-serialbus-dev libqt6serialbus6-dev
 
-          for pkg in qt6-serialport-dev libqt6serialport6-dev; do
-            if apt-cache show "$pkg" >/dev/null 2>&1; then
-              sudo apt-get install -y "$pkg"
-              break
-            fi
-          done
+          install_first_available qt6-serialport-dev libqt6serialport6-dev
 
-          for pkg in qt6-serialbus-plugins libqt6serialbus6-plugins; do
-            if apt-cache show "$pkg" >/dev/null 2>&1; then
-              sudo apt-get install -y "$pkg"
-              break
-            fi
-          done
+          install_first_available qt6-serialbus-plugins libqt6serialbus6-plugins libqt6serialbus6
 
       - name: Build package
         run: |
