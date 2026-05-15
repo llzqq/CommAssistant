@@ -131,7 +131,7 @@ if [[ "${SKIP_BUILD}" != "1" ]]; then
     build_qmake_project "${DELETE_PRO}" "${DELETE_BUILD_DIR}"
 fi
 
-SCRIPT_BIN="$(resolve_binary_path "${BUILD_DIR}" "${SCRIPT_RELEASE_DIR}" "ScriptCommunicator" || true)"
+SCRIPT_BIN="$(resolve_binary_path "${BUILD_DIR}" "${SCRIPT_RELEASE_DIR}" "CommAssistant" || true)"
 DELETE_BIN="$(resolve_binary_path "${DELETE_BUILD_DIR}" "${DELETE_RELEASE_DIR}" "DeleteFolder" || true)"
 
 if [[ ! -f "${SCRIPT_BIN}" ]]; then
@@ -149,7 +149,7 @@ fi
 rm -rf "${STAGE_DIR}"
 mkdir -p "${STAGE_DIR}/lib" "${STAGE_DIR}/plugins"
 
-cp -a "${SCRIPT_BIN}" "${STAGE_DIR}/ScriptCommunicator"
+cp -a "${SCRIPT_BIN}" "${STAGE_DIR}/CommAssistant.bin"
 cp -a "${DELETE_BIN}" "${STAGE_DIR}/DeleteFolder"
 
 copy_file_if_exists "${SCRIPT_RELEASE_DIR}/stylesheet.qss" "${STAGE_DIR}/stylesheet.qss"
@@ -194,7 +194,7 @@ export LD_LIBRARY_PATH="${APP_DIR}/lib${LD_LIBRARY_PATH:+:${LD_LIBRARY_PATH}}"
 export QT_PLUGIN_PATH="${APP_DIR}/plugins"
 export QT_QPA_PLATFORM_PLUGIN_PATH="${APP_DIR}/plugins/platforms"
 
-exec "${APP_DIR}/ScriptCommunicator" "$@"
+exec "${APP_DIR}/CommAssistant.bin" "$@"
 EOF
 chmod +x "${STAGE_DIR}/CommAssistant"
 
@@ -241,7 +241,7 @@ Recommended entrypoint:
 ./CommAssistant
 EOF
 
-set_rpath_if_possible "${STAGE_DIR}/ScriptCommunicator" '$ORIGIN/lib'
+set_rpath_if_possible "${STAGE_DIR}/CommAssistant.bin" '$ORIGIN/lib'
 set_rpath_if_possible "${STAGE_DIR}/DeleteFolder" '$ORIGIN/lib'
 
 while IFS= read -r plugin_file; do

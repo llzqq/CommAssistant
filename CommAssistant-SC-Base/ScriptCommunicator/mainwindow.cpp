@@ -59,6 +59,7 @@
 
 ///The current version of ScriptCommunicator.
 const QString MainWindow::VERSION = SCRIPT_COMMUNICATOR_VERSION;
+const QString MainWindow::APPLICATION_NAME = "CommAssistant";
 
 #ifdef Q_OS_WIN32
 const QString MainWindow::INIT_MAIN_CONFIG_FILE = "initialSettingsWin.config";
@@ -279,7 +280,7 @@ void SendConsole::resizeSlot(void)
         }
     }
 
-    QMessageBox box(QMessageBox::Information, "ScriptCommunicator", "Reformatting console data",
+    QMessageBox box(QMessageBox::Information, MainWindow::APPLICATION_NAME, "Reformatting console data",
                     QMessageBox::NoButton, m_mainWindow);
 
     if(showMessageBox)
@@ -660,7 +661,7 @@ MainWindow::MainWindow(QStringList scripts, bool withScriptWindow, bool scriptWi
             else
             {
                 bool okPressed;
-                QString result = QInputDialog::getItem(this, "select ScriptCommunicator config file","Note: The selected config can be made to default (config menu)",
+                QString result = QInputDialog::getItem(this, QString("select %1 config file").arg(APPLICATION_NAME),"Note: The selected config can be made to default (config menu)",
                                                        list, 0, false, &okPressed, Qt::WindowStaysOnTopHint);
 
                 if(okPressed)
@@ -934,8 +935,8 @@ void MainWindow::sendButtonPressedSlot(void)
       if(currentFormat.contains("can"))
       {
         sendData.clear();
-        QMessageBox::critical(this, "error", QString("The send format is %1 but ScriptCommunicator is not connected to a CAN interface.")
-                              .arg(currentFormat));
+            QMessageBox::critical(this, "error", QString("The send format is %1 but %2 is not connected to a CAN interface.")
+                              .arg(currentFormat, APPLICATION_NAME));
       }
 
     }
@@ -1679,7 +1680,7 @@ bool MainWindow::loadSettings()
             QCoreApplication::processEvents();
         }
 
-        setWindowTitle("ScriptCommunicator " + MainWindow::VERSION + "   " + m_mainConfigFile);
+        setWindowTitle(APPLICATION_NAME + " " + MainWindow::VERSION + "   " + m_mainConfigFile);
 
 
         QFile settingsFile(m_mainConfigFile);
@@ -5142,7 +5143,7 @@ void MainWindow::getSupportSlot()
  */
 void MainWindow::watchVideoSlot()
 {
-    QString text = "A video which demonstrates the basic features of ScriptCommunicator can be found here:";
+    QString text = QString("A video which demonstrates the basic features of %1 can be found here:").arg(APPLICATION_NAME);
     text.append("<br><a href=\"https://www.youtube.com/playlist?list=PLniMuy2Q_xGuFB_kl1nte2mDxfeeOu8ce\"style=\"color: #1c86ce\">https://www.youtube.com/playlist?list=PLniMuy2Q_xGuFB_kl1nte2mDxfeeOu8ce</a>");
 
     QMessageBox msgBox(QMessageBox::Information, "video",text);
@@ -5360,7 +5361,7 @@ void MainWindow::loadPreviousConfigSlot()
 
     bool okPressed;
     QStringList list = readMainConfigFileList();
-    QString result = QInputDialog::getItem(this, "select ScriptCommunicator config file","Note: The selected config can be made to default (config menu)",
+    QString result = QInputDialog::getItem(this, QString("select %1 config file").arg(APPLICATION_NAME),"Note: The selected config can be made to default (config menu)",
                                            list, 0, false, &okPressed, Qt::WindowStaysOnTopHint);
     if(okPressed)
     {
@@ -5544,8 +5545,8 @@ bool MainWindow::checkParsedScVersion(QString version)
                 QString neededMinorString = (neededMinor < 10) ? QString("0%1").arg(neededMinor) : QString("%1").arg(neededMinor);
                 QString neededMajorString = (neededMajor < 10) ? QString("0%1").arg(neededMajor) : QString("%1").arg(neededMajor);
 
-                QMessageBox box(QMessageBox::Warning, "ScriptCommunicator", QString("The current used version of ScriptCommunicator is to old to execute the current sce file.\nThe needed version is %1.%2"
-                                                                                    " and the current version is %3").arg(neededMajorString, neededMinorString, VERSION));
+                QMessageBox box(QMessageBox::Warning, APPLICATION_NAME, QString("The current used version of %1 is too old to execute the current sce file.\nThe needed version is %2.%3"
+                                                                                    " and the current version is %4").arg(APPLICATION_NAME, neededMajorString, neededMinorString, VERSION));
                 QApplication::setActiveWindow(&box);
                 box.exec();
             }
@@ -5554,7 +5555,7 @@ bool MainWindow::checkParsedScVersion(QString version)
         else
         {
             result = false;
-            QMessageBox box(QMessageBox::Warning, "ScriptCommunicator", QString("invalid version in sce file: ") + version);
+            QMessageBox box(QMessageBox::Warning, APPLICATION_NAME, QString("invalid version in sce file: ") + version);
             QApplication::setActiveWindow(&box);
             box.exec();
         }
@@ -5601,14 +5602,14 @@ bool MainWindow::checkScezFileHash(QString fileName)
 
         if(!success)
         {
-            QMessageBox box(QMessageBox::Warning, "ScriptCommunicator", QString("invalid SHA-512 hash in: ") + fileName);
+            QMessageBox box(QMessageBox::Warning, APPLICATION_NAME, QString("invalid SHA-512 hash in: ") + fileName);
             QApplication::setActiveWindow(&box);
             box.exec();
         }
     }
     else
     {
-        QMessageBox box(QMessageBox::Warning, "ScriptCommunicator", QString("could not open: ") + fileName);
+        QMessageBox box(QMessageBox::Warning, APPLICATION_NAME, QString("could not open: ") + fileName);
         QApplication::setActiveWindow(&box);
         box.exec();
     }
@@ -5651,7 +5652,7 @@ bool MainWindow::parseSceFile(QString fileName, QStringList* scripts, QStringLis
         ecsFile.close();
         if (!doc.setContent(content))
         {
-            QMessageBox box(QMessageBox::Warning, "ScriptCommunicator", "could not parse " + fileName);
+            QMessageBox box(QMessageBox::Warning, APPLICATION_NAME, "could not parse " + fileName);
             QApplication::setActiveWindow(&box);
             box.exec();
             result = false;
@@ -5740,7 +5741,7 @@ bool MainWindow::parseSceFile(QString fileName, QStringList* scripts, QStringLis
     }//if (ecsFile.open(QIODevice::ReadOnly))
     else
     {
-        QMessageBox box(QMessageBox::Warning, "ScriptCommunicator", "could not open " + fileName);
+        QMessageBox box(QMessageBox::Warning, APPLICATION_NAME, "could not open " + fileName);
         QApplication::setActiveWindow(&box);
         box.exec();
         result = false;

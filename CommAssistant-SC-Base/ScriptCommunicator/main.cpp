@@ -142,6 +142,8 @@ int main(int argc, char *argv[])
 {
 
     QApplication* a = new QApplication(argc, argv);
+    QApplication::setApplicationName(MainWindow::APPLICATION_NAME);
+    QApplication::setApplicationDisplayName(MainWindow::APPLICATION_NAME);
     QStringList extraPluginPaths;
     QStringList scriptArguments;
     QStringList extraLibPaths;
@@ -203,7 +205,7 @@ int main(int argc, char *argv[])
             }
             else
             {
-                QMessageBox box(QMessageBox::Warning, "ScriptCommunicator", QString("unknown command line argument: ") + currentArg);
+                QMessageBox box(QMessageBox::Warning, MainWindow::APPLICATION_NAME, QString("unknown command line argument: ") + currentArg);
                 QApplication::setActiveWindow(&box);
                 box.exec();
                 delete a;
@@ -253,7 +255,7 @@ int main(int argc, char *argv[])
                         }
                         else
                         {
-                            QMessageBox box(QMessageBox::Warning, "ScriptCommunicator", QString("no sce file found in: ") + currentArg);
+                            QMessageBox box(QMessageBox::Warning, MainWindow::APPLICATION_NAME, QString("no sce file found in: ") + currentArg);
                             QApplication::setActiveWindow(&box);
                             box.exec();
                             return -1;
@@ -261,7 +263,7 @@ int main(int argc, char *argv[])
                     }
                     else
                     {
-                        QMessageBox box(QMessageBox::Warning, "ScriptCommunicator", QString("could not unzip: ") + currentArg);
+                        QMessageBox box(QMessageBox::Warning, MainWindow::APPLICATION_NAME, QString("could not unzip: ") + currentArg);
                         QApplication::setActiveWindow(&box);
                         box.exec();
                         delete a;

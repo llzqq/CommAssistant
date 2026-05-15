@@ -10,7 +10,7 @@ $ErrorActionPreference = "Stop"
 $repoRoot = Resolve-Path (Join-Path $PSScriptRoot "..")
 $projectFile = Join-Path $repoRoot "ScriptCommunicator/ScriptCommunicator.pro"
 $buildDir = Join-Path $repoRoot "build-mingw"
-$releaseExe = Join-Path $buildDir "release/ScriptCommunicator.exe"
+$releaseExe = Join-Path $buildDir "release/CommAssistant.exe"
 $packageRoot = Join-Path $buildDir "single-exe"
 
 if($OutputExe -eq "")
@@ -61,7 +61,7 @@ $payloadZip = Join-Path $packageRoot "payload-$stamp.zip"
 $launcherSource = Join-Path $packageRoot "SingleExeLauncher-$stamp.cs"
 
 New-Item -ItemType Directory -Force $stage | Out-Null
-Copy-Item -LiteralPath $releaseExe -Destination (Join-Path $stage "ScriptCommunicator.exe") -Force
+Copy-Item -LiteralPath $releaseExe -Destination (Join-Path $stage "CommAssistant.exe") -Force
 
 $stylesheet = Join-Path $repoRoot "ScriptCommunicator/qss/stylesheet.qss"
 $stylesheetRcc = Join-Path $repoRoot "ScriptCommunicator/qss/stylesheet.rcc"
@@ -92,7 +92,7 @@ if(Test-Path $manualFile)
     Copy-Item -LiteralPath $manualFile -Destination (Join-Path $stage "Manual_ScriptCommunicator.pdf") -Force
 }
 
-& $windeployqt --release --dir $stage (Join-Path $stage "ScriptCommunicator.exe")
+& $windeployqt --release --dir $stage (Join-Path $stage "CommAssistant.exe")
 
 Compress-Archive -Path (Join-Path $stage "*") -DestinationPath $payloadZip -Force
 
@@ -106,7 +106,7 @@ using System.Reflection;
 internal static class SingleExeLauncher
 {
     private const string ResourceName = "Payload.zip";
-    private const string AppExeName = "ScriptCommunicator.exe";
+    private const string AppExeName = "CommAssistant.exe";
 
     private static int Main()
     {

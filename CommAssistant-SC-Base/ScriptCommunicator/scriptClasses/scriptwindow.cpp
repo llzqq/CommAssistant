@@ -452,7 +452,7 @@ void ScriptWindow::createNewTableRow()
  */
 void ScriptWindow::setTitle(QString extraString)
 {
-    setWindowTitle("ScriptCommunicator " + MainWindow::VERSION + " - Scripts " + extraString);
+    setWindowTitle(MainWindow::APPLICATION_NAME + " " + MainWindow::VERSION + " - Scripts " + extraString);
 }
 
 /**

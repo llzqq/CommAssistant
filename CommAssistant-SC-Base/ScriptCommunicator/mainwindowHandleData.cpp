@@ -1972,7 +1972,7 @@ void MainWindowHandleData::reInsertDataInMixecConsoleSlot(void)
 
     if(settings.showMixedConsole)
     {
-        QMessageBox box(QMessageBox::Information, "ScriptCommunicator", "Reformatting console data",
+        QMessageBox box(QMessageBox::Information, MainWindow::APPLICATION_NAME, "Reformatting console data",
                         QMessageBox::NoButton, m_mainWindow);
         box.setStandardButtons(QMessageBox::NoButton);
 
@@ -2302,7 +2302,7 @@ void MainWindowHandleData::reInsertDataInConsole(void)
     int val4 = 0;
     int val5 = 0;
 
-    QMessageBox box(QMessageBox::Information, "ScriptCommunicator", "Recalculating console data",
+    QMessageBox box(QMessageBox::Information, MainWindow::APPLICATION_NAME, "Recalculating console data",
                     QMessageBox::NoButton, m_mainWindow);
     box.setStandardButtons(QMessageBox::NoButton);
     const Settings* settings = m_settingsDialog->settings();

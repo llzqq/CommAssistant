@@ -53,7 +53,7 @@ $env:PATH="D:/Tools/Qt/Tools/mingw1310_64/bin;D:/Tools/Qt/6.10.3/mingw_64/bin;" 
 构建成功后，主程序位于：
 
 ```text
-CommAssistant-SC-Base/build-mingw/release/ScriptCommunicator.exe
+CommAssistant-SC-Base/build-mingw/release/CommAssistant.exe
 ```
 
 ## 4. 增量构建
@@ -76,7 +76,7 @@ $env:PATH="D:/Tools/Qt/Tools/mingw1310_64/bin;D:/Tools/Qt/6.10.3/mingw_64/bin;" 
 
 ```powershell
 cd "E:/projects/projects/8y/CommAssistant-SC-Base/build-mingw/release"
-.\ScriptCommunicator.exe
+.\CommAssistant.exe
 ```
 
 如果提示缺少 Qt DLL，说明运行目录没有部署 Qt 运行库。执行：
@@ -86,14 +86,14 @@ cd "E:/projects/projects/8y/CommAssistant-SC-Base/build-mingw"
 
 $env:PATH="D:/Tools/Qt/Tools/mingw1310_64/bin;D:/Tools/Qt/6.10.3/mingw_64/bin;" + $env:PATH
 
-& "D:/Tools/Qt/6.10.3/mingw_64/bin/windeployqt.exe" --release "release/ScriptCommunicator.exe"
+& "D:/Tools/Qt/6.10.3/mingw_64/bin/windeployqt.exe" --release "release/CommAssistant.exe"
 ```
 
 部署完成后，再运行：
 
 ```powershell
 cd "E:/projects/projects/8y/CommAssistant-SC-Base/build-mingw/release"
-.\ScriptCommunicator.exe
+.\CommAssistant.exe
 ```
 
 ## 6. Debug 构建
@@ -115,7 +115,7 @@ $env:PATH="D:/Tools/Qt/Tools/mingw1310_64/bin;D:/Tools/Qt/6.10.3/mingw_64/bin;" 
 Debug 程序位于：
 
 ```text
-CommAssistant-SC-Base/build-mingw/debug/ScriptCommunicator.exe
+CommAssistant-SC-Base/build-mingw/debug/CommAssistant.exe
 ```
 
 ## 7. 常见问题
@@ -158,7 +158,7 @@ D:/Tools/Qt/Tools/mingw1310_64/bin/g++.exe
 执行 `windeployqt`：
 
 ```powershell
-& "D:/Tools/Qt/6.10.3/mingw_64/bin/windeployqt.exe" --release "release/ScriptCommunicator.exe"
+& "D:/Tools/Qt/6.10.3/mingw_64/bin/windeployqt.exe" --release "release/CommAssistant.exe"
 ```
 
 ### 修改 UI 后没有生效
@@ -181,7 +181,7 @@ cd "build-mingw"
 $env:PATH="D:/Tools/Qt/Tools/mingw1310_64/bin;D:/Tools/Qt/6.10.3/mingw_64/bin;" + $env:PATH
 & "D:/Tools/Qt/6.10.3/mingw_64/bin/qmake.exe" "../ScriptCommunicator/ScriptCommunicator.pro" -spec win32-g++ "CONFIG+=release"
 & "D:/Tools/Qt/Tools/mingw1310_64/bin/mingw32-make.exe" -j8 release
-& "D:/Tools/Qt/6.10.3/mingw_64/bin/windeployqt.exe" --release "release/ScriptCommunicator.exe"
+& "D:/Tools/Qt/6.10.3/mingw_64/bin/windeployqt.exe" --release "release/CommAssistant.exe"
 ```
 
 ## 9. 只交付一个 exe 的打包方式

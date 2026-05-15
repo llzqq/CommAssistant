@@ -190,7 +190,7 @@ bool CommAssistantDialog::sendFromMainWindow(const QByteArray& payload, QString*
 
 void CommAssistantDialog::buildUi()
 {
-    setWindowTitle("Communications Assistant");
+    setWindowTitle("CommAssistant");
     resize(980, 720);
 
     auto *root = new QVBoxLayout(this);

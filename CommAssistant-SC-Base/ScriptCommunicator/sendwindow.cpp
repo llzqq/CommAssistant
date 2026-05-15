@@ -1472,7 +1472,7 @@ void SendWindow::checkTableChanged()
  */
 void SendWindow::setTitle(QString extraString)
 {
-    setWindowTitle("ScriptCommunicator " + MainWindow::VERSION + " - Send " + extraString);
+    setWindowTitle(MainWindow::APPLICATION_NAME + " " + MainWindow::VERSION + " - Send " + extraString);
 }
 
 /**
@@ -2077,8 +2077,8 @@ void SendWindow::sendButtonPressedSlot()
           if(!m_userInterface->CyclicSendFormat->currentText().contains("can"))
           {
             sendData.clear();
-            QMessageBox::critical(this, "error", QString("ScriptCommunicator is connected to a CAN interface but the send format is not can or can-fd.")
-                                .arg(m_userInterface->CyclicSendFormat->currentText()));
+            QMessageBox::critical(this, "error", QString("%1 is connected to a CAN interface but the send format is not can or can-fd.")
+                                .arg(MainWindow::APPLICATION_NAME));
           }
         }
         else
@@ -2086,8 +2086,8 @@ void SendWindow::sendButtonPressedSlot()
           if(m_userInterface->CyclicSendFormat->currentText().contains("can"))
           {
             sendData.clear();
-            QMessageBox::critical(this, "error", QString("The send format is %1 but ScriptCommunicator is not connected to a CAN interface.")
-                                  .arg(m_userInterface->CyclicSendFormat->currentText()));
+            QMessageBox::critical(this, "error", QString("The send format is %1 but %2 is not connected to a CAN interface.")
+                                  .arg(m_userInterface->CyclicSendFormat->currentText(), MainWindow::APPLICATION_NAME));
           }
 
         }

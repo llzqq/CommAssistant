@@ -177,6 +177,9 @@ public:
     ///The current version of ScriptCommunicator.
     static const QString VERSION;
 
+    ///The user-visible application name.
+    static const QString APPLICATION_NAME;
+
     ///The name of the intial main config file.
     static const QString INIT_MAIN_CONFIG_FILE;
 

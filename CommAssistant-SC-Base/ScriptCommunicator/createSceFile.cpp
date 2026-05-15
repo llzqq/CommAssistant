@@ -979,7 +979,7 @@ void CreateSceFile::typeTextChangedSlot(QString text)
  */
 void CreateSceFile::setTitle(QString extraString)
 {
-    setWindowTitle("ScriptCommunicator " + MainWindow::VERSION + " - SCE File Dialog: " + extraString);
+    setWindowTitle(MainWindow::APPLICATION_NAME + " " + MainWindow::VERSION + " - SCE File Dialog: " + extraString);
 }
 
 /**
