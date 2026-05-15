@@ -4204,8 +4204,8 @@ void MainWindow::initActionsConnections()
 
     if(m_commAssistantAction == 0)
     {
-        m_commAssistantAction = new QAction(QIcon(":/images/settings.png"), "Comm Assistant", this);
-        m_commAssistantAction->setToolTip("open Comm Assistant");
+        m_commAssistantAction = new QAction(QIcon(":/images/settings.png"), "Connect", this);
+        m_commAssistantAction->setToolTip("open Connect");
         connect(m_commAssistantAction, SIGNAL(triggered()), this, SLOT(showCommAssistantSlot()));
     }
 
