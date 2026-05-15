@@ -279,7 +279,7 @@ void SendConsole::resizeSlot(void)
         }
     }
 
-    QMessageBox box(QMessageBox::Information, "ScriptCommunicator", "Reformatting console data",
+    QMessageBox box(QMessageBox::Information, "CommAssistant", "Reformatting console data",
                     QMessageBox::NoButton, m_mainWindow);
 
     if(showMessageBox)
@@ -660,7 +660,7 @@ MainWindow::MainWindow(QStringList scripts, bool withScriptWindow, bool scriptWi
             else
             {
                 bool okPressed;
-                QString result = QInputDialog::getItem(this, "select ScriptCommunicator config file","Note: The selected config can be made to default (config menu)",
+                QString result = QInputDialog::getItem(this, "select CommAssistant config file","Note: The selected config can be made to default (config menu)",
                                                        list, 0, false, &okPressed, Qt::WindowStaysOnTopHint);
 
                 if(okPressed)
@@ -934,7 +934,7 @@ void MainWindow::sendButtonPressedSlot(void)
       if(currentFormat.contains("can"))
       {
         sendData.clear();
-        QMessageBox::critical(this, "error", QString("The send format is %1 but ScriptCommunicator is not connected to a CAN interface.")
+        QMessageBox::critical(this, "error", QString("The send format is %1 but CommAssistant is not connected to a CAN interface.")
                               .arg(currentFormat));
       }
 
@@ -1679,7 +1679,7 @@ bool MainWindow::loadSettings()
             QCoreApplication::processEvents();
         }
 
-        setWindowTitle("ScriptCommunicator " + MainWindow::VERSION + "   " + m_mainConfigFile);
+        setWindowTitle("CommAssistant " + MainWindow::VERSION + "   " + m_mainConfigFile);
 
 
         QFile settingsFile(m_mainConfigFile);
@@ -4203,8 +4203,8 @@ void MainWindow::initActionsConnections()
 
     if(m_commAssistantAction == 0)
     {
-        m_commAssistantAction = new QAction(QIcon(":/images/settings.png"), "Comm Assistant", this);
-        m_commAssistantAction->setToolTip("open Comm Assistant");
+        m_commAssistantAction = new QAction(QIcon(":/images/settings.png"), "Connect", this);
+        m_commAssistantAction->setToolTip("open Connect");
         connect(m_commAssistantAction, SIGNAL(triggered()), this, SLOT(showCommAssistantSlot()));
     }
 
@@ -5360,7 +5360,7 @@ void MainWindow::loadPreviousConfigSlot()
 
     bool okPressed;
     QStringList list = readMainConfigFileList();
-    QString result = QInputDialog::getItem(this, "select ScriptCommunicator config file","Note: The selected config can be made to default (config menu)",
+    QString result = QInputDialog::getItem(this, "select CommAssistant config file","Note: The selected config can be made to default (config menu)",
                                            list, 0, false, &okPressed, Qt::WindowStaysOnTopHint);
     if(okPressed)
     {
@@ -5544,7 +5544,7 @@ bool MainWindow::checkParsedScVersion(QString version)
                 QString neededMinorString = (neededMinor < 10) ? QString("0%1").arg(neededMinor) : QString("%1").arg(neededMinor);
                 QString neededMajorString = (neededMajor < 10) ? QString("0%1").arg(neededMajor) : QString("%1").arg(neededMajor);
 
-                QMessageBox box(QMessageBox::Warning, "ScriptCommunicator", QString("The current used version of ScriptCommunicator is to old to execute the current sce file.\nThe needed version is %1.%2"
+                QMessageBox box(QMessageBox::Warning, "CommAssistant", QString("The current used version of CommAssistant is to old to execute the current sce file.\nThe needed version is %1.%2"
                                                                                     " and the current version is %3").arg(neededMajorString, neededMinorString, VERSION));
                 QApplication::setActiveWindow(&box);
                 box.exec();
@@ -5554,7 +5554,7 @@ bool MainWindow::checkParsedScVersion(QString version)
         else
         {
             result = false;
-            QMessageBox box(QMessageBox::Warning, "ScriptCommunicator", QString("invalid version in sce file: ") + version);
+            QMessageBox box(QMessageBox::Warning, "CommAssistant", QString("invalid version in sce file: ") + version);
             QApplication::setActiveWindow(&box);
             box.exec();
         }
@@ -5601,14 +5601,14 @@ bool MainWindow::checkScezFileHash(QString fileName)
 
         if(!success)
         {
-            QMessageBox box(QMessageBox::Warning, "ScriptCommunicator", QString("invalid SHA-512 hash in: ") + fileName);
+            QMessageBox box(QMessageBox::Warning, "CommAssistant", QString("invalid SHA-512 hash in: ") + fileName);
             QApplication::setActiveWindow(&box);
             box.exec();
         }
     }
     else
     {
-        QMessageBox box(QMessageBox::Warning, "ScriptCommunicator", QString("could not open: ") + fileName);
+        QMessageBox box(QMessageBox::Warning, "CommAssistant", QString("could not open: ") + fileName);
         QApplication::setActiveWindow(&box);
         box.exec();
     }
@@ -5651,7 +5651,7 @@ bool MainWindow::parseSceFile(QString fileName, QStringList* scripts, QStringLis
         ecsFile.close();
         if (!doc.setContent(content))
         {
-            QMessageBox box(QMessageBox::Warning, "ScriptCommunicator", "could not parse " + fileName);
+            QMessageBox box(QMessageBox::Warning, "CommAssistant", "could not parse " + fileName);
             QApplication::setActiveWindow(&box);
             box.exec();
             result = false;
@@ -5740,7 +5740,7 @@ bool MainWindow::parseSceFile(QString fileName, QStringList* scripts, QStringLis
     }//if (ecsFile.open(QIODevice::ReadOnly))
     else
     {
-        QMessageBox box(QMessageBox::Warning, "ScriptCommunicator", "could not open " + fileName);
+        QMessageBox box(QMessageBox::Warning, "CommAssistant", "could not open " + fileName);
         QApplication::setActiveWindow(&box);
         box.exec();
         result = false;
