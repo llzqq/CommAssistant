@@ -527,7 +527,7 @@ SettingsDialog::SettingsDialog(QAction *actionLockScrolling) :
    // m_userInterface->consoleNewLineAt->setCompleter(nullptr);
     //m_userInterface->logNewLineAt->setCompleter(nullptr);
 
-    setWindowTitle("ScriptCommunicator " + MainWindow::VERSION + " - Settings");
+    setWindowTitle("CommAssistant " + MainWindow::VERSION + " - Settings");
 
     int pixelSize = QApplication::font().pixelSize();
     m_userInterface->appFontSizeComboBox->blockSignals(true);

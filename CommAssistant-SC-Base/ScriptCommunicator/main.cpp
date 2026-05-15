@@ -142,6 +142,8 @@ int main(int argc, char *argv[])
 {
 
     QApplication* a = new QApplication(argc, argv);
+    QCoreApplication::setApplicationName("CommAssistant");
+    QApplication::setApplicationDisplayName("CommAssistant");
     QStringList extraPluginPaths;
     QStringList scriptArguments;
     QStringList extraLibPaths;
@@ -203,7 +205,7 @@ int main(int argc, char *argv[])
             }
             else
             {
-                QMessageBox box(QMessageBox::Warning, "ScriptCommunicator", QString("unknown command line argument: ") + currentArg);
+                QMessageBox box(QMessageBox::Warning, "CommAssistant", QString("unknown command line argument: ") + currentArg);
                 QApplication::setActiveWindow(&box);
                 box.exec();
                 delete a;
@@ -253,7 +255,7 @@ int main(int argc, char *argv[])
                         }
                         else
                         {
-                            QMessageBox box(QMessageBox::Warning, "ScriptCommunicator", QString("no sce file found in: ") + currentArg);
+                            QMessageBox box(QMessageBox::Warning, "CommAssistant", QString("no sce file found in: ") + currentArg);
                             QApplication::setActiveWindow(&box);
                             box.exec();
                             return -1;
@@ -261,7 +263,7 @@ int main(int argc, char *argv[])
                     }
                     else
                     {
-                        QMessageBox box(QMessageBox::Warning, "ScriptCommunicator", QString("could not unzip: ") + currentArg);
+                        QMessageBox box(QMessageBox::Warning, "CommAssistant", QString("could not unzip: ") + currentArg);
                         QApplication::setActiveWindow(&box);
                         box.exec();
                         delete a;

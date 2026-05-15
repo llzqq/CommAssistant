@@ -23,7 +23,7 @@
    </size>
   </property>
   <property name="windowTitle">
-   <string>ScriptCommunicator</string>
+   <string>CommAssistant</string>
   </property>
   <property name="windowIcon">
    <iconset resource="ScriptCommunicator.qrc">

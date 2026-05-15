@@ -979,7 +979,7 @@ void CreateSceFile::typeTextChangedSlot(QString text)
  */
 void CreateSceFile::setTitle(QString extraString)
 {
-    setWindowTitle("ScriptCommunicator " + MainWindow::VERSION + " - SCE File Dialog: " + extraString);
+    setWindowTitle("CommAssistant " + MainWindow::VERSION + " - SCE File Dialog: " + extraString);
 }
 
 /**
@@ -1234,5 +1234,4 @@ void CreateSceFile::loadConfigFile(void)
         }
     }
 }
-
 

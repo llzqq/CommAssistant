@@ -18,7 +18,7 @@ unix{
 QMAKE_CXXFLAGS += -Wno-cast-function-type
 }
 
-TARGET = ScriptCommunicator
+TARGET = CommAssistant
 TEMPLATE = app
 QT += xml
 QT += printsupport

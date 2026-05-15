@@ -1472,7 +1472,7 @@ void SendWindow::checkTableChanged()
  */
 void SendWindow::setTitle(QString extraString)
 {
-    setWindowTitle("ScriptCommunicator " + MainWindow::VERSION + " - Send " + extraString);
+    setWindowTitle("CommAssistant " + MainWindow::VERSION + " - Send " + extraString);
 }
 
 /**
@@ -2077,7 +2077,7 @@ void SendWindow::sendButtonPressedSlot()
           if(!m_userInterface->CyclicSendFormat->currentText().contains("can"))
           {
             sendData.clear();
-            QMessageBox::critical(this, "error", QString("ScriptCommunicator is connected to a CAN interface but the send format is not can or can-fd.")
+            QMessageBox::critical(this, "error", QString("CommAssistant is connected to a CAN interface but the send format is not can or can-fd.")
                                 .arg(m_userInterface->CyclicSendFormat->currentText()));
           }
         }
@@ -2086,7 +2086,7 @@ void SendWindow::sendButtonPressedSlot()
           if(m_userInterface->CyclicSendFormat->currentText().contains("can"))
           {
             sendData.clear();
-            QMessageBox::critical(this, "error", QString("The send format is %1 but ScriptCommunicator is not connected to a CAN interface.")
+            QMessageBox::critical(this, "error", QString("The send format is %1 but CommAssistant is not connected to a CAN interface.")
                                   .arg(m_userInterface->CyclicSendFormat->currentText()));
           }
 
